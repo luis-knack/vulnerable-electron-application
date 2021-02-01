@@ -94,7 +94,7 @@ function sandboxRceWindow(){
         }
     });
     addWindow.loadURL(url.format({
-        pathname: path.join(__dirname, 'nodeIntegrationRce.html'),
+        pathname: path.join(__dirname, 'sandboxRce.html'),
         protocol: 'file:',
         slashes: true,
     }));
