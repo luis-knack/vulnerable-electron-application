@@ -60,13 +60,13 @@ function createAddWindow(){
     });
 }
 
-function nodeRceWindow(){
+function nodeRceDisabled(){
 
     // payload
     // <script> require('child_process').execFile('gnome-calculator',function(){})</script>
     // <script> require('child_process').exec('gnome-calculator')</script>
     addWindow = new BrowserWindow({
-        title:'Node Integration RCE',
+        title:'Node Integration Disabled',
         webPreferences:{
             nodeIntegration: true
         }
@@ -82,13 +82,13 @@ function nodeRceWindow(){
     });
 
 }
-function sandboxRceWindow(){
+function sandboxDisabled(){
 
     //payload => preload-script
     //<script>nativos.modulosNativos.exec('gnome-calculator')</script>
 
     addWindow = new BrowserWindow({
-        title:'Sandbox RCE',
+        title:'Sandbox Disabled',
         webPreferences:{
             preload: path.join(app.getAppPath(), 'preload.js')
         }
@@ -104,10 +104,10 @@ function sandboxRceWindow(){
     });
 
 }
-function contextIsolationRceWindow(){
+function contextIsolationEnabled(){
 
     addWindow = new BrowserWindow({
-        title:'Context Isolation RCE',
+        title:'Context Isolation Enabled',
         webPreferences:{
             sandbox: true,
             preload: path.join(__dirname, 'preload.js')
@@ -145,31 +145,24 @@ const mainMenuTemplate = [
                 }
             },
             {
-                label:"Node Integration RCE",
+                label:"Node Integration Disabled",
                 accelerator: process.plataform == 'darwin' ? 'Command+1' : 'Ctrl+1',
                 click(){
-                    nodeRceWindow();
+                    nodeRceDisabled();
                 }
             },
             {
-                label:"Sandbox RCE",
+                label:"Sandbox Disabled",
                 accelerator: process.plataform == 'darwin' ? 'Command+2' : 'Ctrl+2',
                 click(){
-                    sandboxRceWindow();         
+                    sandboxDisabled();         
                 }
             },
             {
-                label:"Context Isolation RCE",
+                label:"Context Isolation Enabled",
                 accelerator: process.plataform == 'darwin' ? 'Command+3' : 'Ctrl+3',
                 click(){
-                    contextIsolationRceWindow();
-                }
-            },
-            {
-                label:"Preload Script RCE",
-                accelerator: process.plataform == 'darwin' ? 'Command+4' : 'Ctrl+4',
-                click(){
-                    preloadScriptRceWindow();
+                    contextIsolationEnabled();
                 }
             },
             // {
