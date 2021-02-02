@@ -21,7 +21,7 @@
         const { shell } = require('electron')
         function openExternalInput(){
             var inpUser = document.getElementById('inputUsuario').value;
-            if(inpUser.includes("file")){
+            if(!inpUser.includes("file://")){
                 shell.openExternal(inpUser);
             }
         }

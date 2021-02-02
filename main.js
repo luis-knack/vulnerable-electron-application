@@ -65,6 +65,7 @@ function nodeRceDisabled(){
     // payload
     // <script> require('child_process').execFile('gnome-calculator',function(){})</script>
     // <script> require('child_process').exec('gnome-calculator')</script>
+    
     addWindow = new BrowserWindow({
         title:'Node Integration Disabled',
         webPreferences:{
@@ -95,7 +96,7 @@ function sandboxDisabled(){
         }
     });
     addWindow.loadURL(url.format({
-        pathname: path.join(__dirname, 'sandboxRce.html'),
+        pathname: path.join(__dirname, 'nodeIntegrationRce.html'),
         protocol: 'file:',
         slashes: true,
     }));

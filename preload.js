@@ -28,6 +28,7 @@ var nativos = {
 }
 
 process.once('loaded', function(){
+    // global.app_preload=require('electron').remote.app
     global.nativos=nativos;
     global.preloadText=preloadText;
 })
