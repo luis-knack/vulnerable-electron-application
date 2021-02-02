@@ -1,5 +1,5 @@
 // const { ipcRenderer } = require("electron");
-const preloadText="Text Inserted In Preload"
+const preloadText="Access To Preload"
 
 // var IPCWhitelist=[
 //     'log-debug',

@@ -90,6 +90,7 @@ function sandboxDisabled(){
     addWindow = new BrowserWindow({
         title:'Sandbox Disabled',
         webPreferences:{
+            nodeIntegration: false,
             preload: path.join(app.getAppPath(), 'preload.js')
         }
     });
@@ -159,8 +160,14 @@ const mainMenuTemplate = [
                 }
             },
             {
-                label:"Context Isolation Enabled",
+                label:"Remote Module Enabled",
                 accelerator: process.plataform == 'darwin' ? 'Command+3' : 'Ctrl+3',
+                click(){
+                    remoteModuleEnabled();
+                }
+            },{
+                label:"Context Isolation Enabled",
+                accelerator: process.plataform == 'darwin' ? 'Command+3' : 'Ctrl+4',
                 click(){
                     contextIsolationEnabled();
                 }
