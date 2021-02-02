@@ -105,7 +105,27 @@ function sandboxDisabled(){
     });
 
 }
-function contextIsolationEnabled(){
+function openExternalValidation(){
+
+    addWindow = new BrowserWindow({
+        title:'Open External Validation',
+        webPreferences:{
+            nodeIntegration: true
+        }
+    });
+
+    addWindow.loadURL(url.format({
+        pathname: path.join(__dirname, 'openExternal.html'),
+        protocol: 'file:',
+        slashes: true,
+    }));
+    
+    //Garbage collenction handle
+    addWindow.on('close', function(){
+        addWindow=null;
+    });
+
+}function contextIsolationEnabled(){
 
     addWindow = new BrowserWindow({
         title:'Context Isolation Enabled',
@@ -160,12 +180,13 @@ const mainMenuTemplate = [
                 }
             },
             {
-                label:"Remote Module Enabled",
+                label:"Open External Validation",
                 accelerator: process.plataform == 'darwin' ? 'Command+3' : 'Ctrl+3',
                 click(){
-                    remoteModuleEnabled();
+                    openExternalValidation();
                 }
-            },{
+            },
+            {
                 label:"Context Isolation Enabled",
                 accelerator: process.plataform == 'darwin' ? 'Command+3' : 'Ctrl+4',
                 click(){

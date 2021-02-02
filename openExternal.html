@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <title>Open External Validation</title>
+</head>
+<body>
+
+    <h1>Open External Validation</h1>
+
+    <form>
+        <div>
+            <label>Digite o Site Aberto:</label>
+            <br/>
+            <input type="text" style="width:100%"  id="inputUsuario" autofocus>
+            <p id="reflected"></p>
+        </div>
+        <button type="submit" onclick="openExternalInput()">enter</button>
+    </form>
+
+    <script>
+        const { shell } = require('electron')
+        function openExternalInput(){
+            var inpUser = document.getElementById('inputUsuario').value;
+            if(inpUser.includes("file")){
+                shell.openExternal(inpUser);
+            }
+        }
+    </script>
+
+</body>
+</html>
