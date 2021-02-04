@@ -2,7 +2,7 @@
 const url = require('url');
 const path = require('path');
 
-const {app, BrowserWindow, Menu, ipcMain} = require('electron');
+const {app, BrowserWindow, Menu, ipcMain, shell} = require('electron');
 
 let mainWindow;
 let addWindow;
@@ -113,6 +113,7 @@ function openExternalValidation(){
         title:'Open External Validation',
         webPreferences:{
             nodeIntegration: false,
+            sandbox: true,
             preload: path.join(app.getAppPath(), 'preload-openExternal.js')
         }
     });
@@ -128,7 +129,8 @@ function openExternalValidation(){
         addWindow=null;
     });
 
-}function contextIsolationEnabled(){
+}
+function contextIsolationEnabled(){
 
     addWindow = new BrowserWindow({
         title:'Context Isolation Enabled',
@@ -152,11 +154,11 @@ function openExternalValidation(){
     });
 
 }
-//Catch item:add
-ipcMain.on('item:add', function(e, item){
-    //Send to the main window
-    mainWindow.webContents.send('item:add', item);
-    addWindow.close();
+//Catch open-external
+ipcMain.on('open-external', function(e, url){
+
+    shell.openExternal(url)
+
 });
 
 //Create menu template

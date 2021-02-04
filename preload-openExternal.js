@@ -1,9 +1,11 @@
-const {shell} = require('electron');
+const { ipcRenderer } = require('electron');
 
-function funcOpenExternal(arg) {
+function funcOpenExternal(url) {
 
-    if(arg.substr(0,8)==="https://" || arg.substr(0,7)==="http://"){
-        return shell.openExternal(arg);
+    if(url.substr(0,8)==="https://" || url.substr(0,7)==="http://"){
+        
+        return ipcRenderer.send('open-external', url)
+
     }
     throw new Error();   
 }
