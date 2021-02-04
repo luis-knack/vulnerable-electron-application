@@ -25,7 +25,7 @@ app.on('ready', function(){
     //Quit app when closed
     mainWindow.on('close', function(){
         app.quit();
-    });
+    }); 
 
     //Build menu from template
     const mainMenu = Menu.buildFromTemplate(mainMenuTemplate);
@@ -92,11 +92,12 @@ function sandboxDisabled(){
         title:'Sandbox Disabled',
         webPreferences:{
             nodeIntegration: false,
+            contextIsolation: true,
             preload: path.join(app.getAppPath(), 'preload.js')
         }
     });
     addWindow.loadURL(url.format({
-        pathname: path.join(__dirname, 'nodeIntegrationRce.html'),
+        pathname: path.join(__dirname, 'sandboxRce.html'),
         protocol: 'file:',
         slashes: true,
     }));
@@ -111,7 +112,7 @@ function openExternalValidation(){
     addWindow = new BrowserWindow({
         title:'Open External Validation',
         webPreferences:{
-            nodeIntegration: true
+            nodeIntegration: true,
         }
     });
 
@@ -131,8 +132,10 @@ function openExternalValidation(){
     addWindow = new BrowserWindow({
         title:'Context Isolation Enabled',
         webPreferences:{
+            nodeIntegration: false,
             sandbox: true,
-            preload: path.join(__dirname, 'preload.js')
+            // enableRemoteModule: true,
+            preload: path.join(__dirname, 'preload-simulate-discord.js')
         }
     });
 
