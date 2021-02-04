@@ -14,19 +14,8 @@
             <input type="text" style="width:100%"  id="inputUsuario" autofocus>
             <p id="reflected"></p>
         </div>
-        <button type="submit" onclick="openExternalInput()">enter</button>
+        <button type="submit" onclick="funcOpenExternal(document.getElementById('inputUsuario').value)">enter</button>
     </form>
-
-    <script>
-        const { shell } = require('electron')
-        function openExternalInput(){
-            var inpUser = document.getElementById('inputUsuario').value;
-            
-            if(inpUser.includes("http://") || inpUser.includes("https://")){
-                shell.openExternal(inpUser);
-            }
-        }
-    </script>
 
 </body>
 </html>

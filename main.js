@@ -112,7 +112,8 @@ function openExternalValidation(){
     addWindow = new BrowserWindow({
         title:'Open External Validation',
         webPreferences:{
-            nodeIntegration: true,
+            nodeIntegration: false,
+            preload: path.join(app.getAppPath(), 'preload-openExternal.js')
         }
     });
 
