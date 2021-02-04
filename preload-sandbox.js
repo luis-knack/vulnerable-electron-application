@@ -1,9 +1,9 @@
 const { ipcRenderer } = require('electron');
 
-ipcRenderer.send('nativos-aplicacao')
+// ipcRenderer.send('nativos-aplicacao')
 
-ipcRenderer.on('nativos-aplicacao', function(event, arg){
-    window.nativos=arg    
-})
+// ipcRenderer.on('nativos-aplicacao', function(event, arg){
+//     window.nativos=arg    
+// })
 
-// window.getChildProcess=getChildProcess
+window.export_ipc_renderer=ipcRenderer
