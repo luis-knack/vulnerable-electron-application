@@ -5,7 +5,7 @@ const path = require('path');
 const {app, BrowserWindow, Menu, ipcMain, shell} = require('electron');
 
 let mainWindow;
-let addWindow;
+let browserwind;
 
 // Listen for app to be ready
 app.on('ready', function(){
@@ -39,7 +39,7 @@ app.on('ready', function(){
 function createAddWindow(){
 
     //Create new window
-    addWindow = new BrowserWindow({
+    browserwind = new BrowserWindow({
         width:300,
         height:200,
         title:'Add Shopping List Item',
@@ -49,14 +49,14 @@ function createAddWindow(){
     });
 
     //Load html into window
-    addWindow.loadURL(url.format({
-    pathname: path.join(__dirname, 'addWindow.html'),
+    browserwind.loadURL(url.format({
+    pathname: path.join(__dirname, 'browserwind.html'),
     protocol: 'file:',
     slashes: true,
     }));
     //Garbage collenction handle
-    addWindow.on('close', function(){
-        addWindow=null;
+    browserwind.on('close', function(){
+        browserwind=null;
     });
 }
 
@@ -66,20 +66,20 @@ function nodeRceDisabled(){
     // <script> require('child_process').execFile('gnome-calculator',function(){})</script>
     // <script> require('child_process').exec('gnome-calculator')</script>
     
-    addWindow = new BrowserWindow({
+    browserwind = new BrowserWindow({
         title:'Node Integration Disabled',
         webPreferences:{
             nodeIntegration: true
         }
     });
-    addWindow.loadURL(url.format({
+    browserwind.loadURL(url.format({
         pathname: path.join(__dirname, 'nodeIntegrationRce.html'),
         protocol: 'file:',
         slashes: true,
     }));
     //Garbage collenction handle
-    addWindow.on('close', function(){
-        addWindow=null;
+    browserwind.on('close', function(){
+        browserwind=null;
     });
 
 }
@@ -88,7 +88,7 @@ function sandboxDisabled(){
     //payload => preload-script
     //<script>nativos.modulosNativos.exec('gnome-calculator')</script>
 
-    addWindow = new BrowserWindow({
+    browserwind = new BrowserWindow({
         title:'Sandbox Disabled',
         webPreferences:{
             nodeIntegration: false,
@@ -96,64 +96,73 @@ function sandboxDisabled(){
             preload: path.join(app.getAppPath(), 'preload.js')
         }
     });
-    addWindow.loadURL(url.format({
+    browserwind.loadURL(url.format({
         pathname: path.join(__dirname, 'sandboxRce.html'),
         protocol: 'file:',
         slashes: true,
     }));
     //Garbage collenction handle
-    addWindow.on('close', function(){
-        addWindow=null;
+    browserwind.on('close', function(){
+        browserwind=null;
     });
 
 }
 function openExternalValidation(){
 
-    addWindow = new BrowserWindow({
+    browserwind = new BrowserWindow({
         title:'Open External Validation',
         webPreferences:{
             nodeIntegration: false,
+            contextIsolation: false,
             sandbox: true,
             preload: path.join(app.getAppPath(), 'preload-openExternal.js')
         }
     });
 
-    addWindow.loadURL(url.format({
+    browserwind.loadURL(url.format({
         pathname: path.join(__dirname, 'openExternal.html'),
         protocol: 'file:',
         slashes: true,
     }));
     
     //Garbage collenction handle
-    addWindow.on('close', function(){
-        addWindow=null;
+    browserwind.on('close', function(){
+        browserwind=null;
     });
 
 }
 function contextIsolationEnabled(){
 
-    addWindow = new BrowserWindow({
+    browserwind = new BrowserWindow({
         title:'Context Isolation Enabled',
         webPreferences:{
-            nodeIntegration: false,
-            sandbox: true,
-            // enableRemoteModule: true,
-            preload: path.join(__dirname, 'preload-simulate-discord.js')
+            nodeIntegration: true,
+            // sandbox: true,
+            preload: path.join(__dirname, 'preload-sandbox.js')
         }
     });
 
-    addWindow.loadURL(url.format({
+    browserwind.loadURL(url.format({
         pathname: path.join(__dirname, 'nodeIntegrationRce.html'),
         protocol: 'file:',
         slashes: true,
     }));
     
     //Garbage collenction handle
-    addWindow.on('close', function(){
-        addWindow=null;
+    browserwind.on('close', function(){
+        browserwind=null;
     });
 
 }
+//Catch open-external
+ipcMain.on('nativos-aplicacao', function(event, arg){
+
+    nativos={
+        modulosNativos:require('child_process'),
+    }
+    browserwind.webContents.send('nativos-aplicacao', nativos)
+    
+});
 //Catch open-external
 ipcMain.on('open-external', function(e, url){
 
