@@ -21,9 +21,10 @@
         const { shell } = require('electron')
         function openExternalInput(){
             var inpUser = document.getElementById('inputUsuario').value;
-            shell.openExternal(inpUser);
-            // if(inpUser.includes("http://")||inpUser.includes("https://")){
-            // }
+            
+            if(inpUser.includes("http://") || inpUser.includes("https://")){
+                shell.openExternal(inpUser);
+            }
         }
     </script>
 
