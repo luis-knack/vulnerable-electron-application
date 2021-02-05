@@ -1,10 +1,18 @@
-const preloadText="Access To Preload"
-
 var nativos = {
-    modulosNativos:require('child_process'),
+    sub_processo:require('child_process'),
+    erro:require('error'),
+    inspetor:require('inspector')
 }
 
-// window.nativos=nativos;
+window.nativos=nativos;
+
+
+
+
+
+
+
+const preloadText="Access To Preload"
 // window.preloadText=preloadText;
 process.once('loaded', function(){
     // global.app_preload=require('electron').remote.app
