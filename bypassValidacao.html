@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <title>Bypass Validacao JS</title>
+</head>
+<body>
+    <h1 id="resultado"></h1>
+    <form>
+        <div>
+            <h1>Digite o Site:</h1>
+            <br/>
+            <input type="text" style="width:100%"  id="site" autofocus>
+            <p id="reflected"></p>
+        </div>
+        <button type="submit" onclick="access_site()">enter</button>
+    </form>
+    <script>
+        function access_site(){
+            alert(accessSite(document.getElementById("site").value));
+        }
+    </script>
+</body>
+</html>

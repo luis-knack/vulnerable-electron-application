@@ -60,11 +60,11 @@ function createAddWindow(){
     });
 }
 
-function nodeRceDisabled(){
-
     // payload
     // <script> require('child_process').execFile('gnome-calculator',function(){})</script>
     // <script> require('child_process').exec('gnome-calculator')</script>
+
+function nodeRceDisabled(){
     
     browserwind = new BrowserWindow({
         title:'Node Integration Disabled',
@@ -154,6 +154,32 @@ function contextIsolationEnabled(){
     });
 
 }
+function bypassValidacaoJavaScript(){
+
+    browserwind = new BrowserWindow({
+        title:'Bypass Validacao Java Script',
+        webPreferences:{
+            preload: path.join(__dirname, 'preload-bypass-validacao.js')
+        }
+    });
+
+    browserwind.loadURL(url.format({
+        pathname: path.join(__dirname, 'bypassValidacao.html'),
+        protocol: 'file:',
+        slashes: true,
+    }));
+    
+    //Garbage collenction handle
+    browserwind.on('close', function(){
+        browserwind=null;
+    });
+
+}
+
+
+
+
+
 //Catch open-external
 ipcMain.on('nativos-aplicacao', function(event, arg){
 
@@ -204,9 +230,16 @@ const mainMenuTemplate = [
             },
             {
                 label:"Context Isolation Enabled",
-                accelerator: process.plataform == 'darwin' ? 'Command+3' : 'Ctrl+4',
+                accelerator: process.plataform == 'darwin' ? 'Command+4' : 'Ctrl+4',
                 click(){
                     contextIsolationEnabled();
+                }
+            },
+            {
+                label:"Bypass JavaScript Validation",
+                accelerator: process.plataform == 'darwin' ? 'Command+5' : 'Ctrl+5',
+                click(){
+                    bypassValidacaoJavaScript();
                 }
             },
             // {
