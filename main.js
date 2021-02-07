@@ -17,11 +17,7 @@ app.on('ready', function(){
     });
 
     //Load html into window
-    mainWindow.loadURL(url.format({
-        pathname: path.join(__dirname, 'mainWindow.html'),
-        protocol: 'file:',
-        slashes: true,
-    }));
+    mainWindow.loadFile('mainWindow.html');
     //Quit app when closed
     mainWindow.on('close', function(){
         app.quit();
@@ -49,11 +45,7 @@ function createAddWindow(){
     });
 
     //Load html into window
-    browserwind.loadURL(url.format({
-    pathname: path.join(__dirname, 'browserwind.html'),
-    protocol: 'file:',
-    slashes: true,
-    }));
+    browserwind.loadFile('browserwind.html');
     //Garbage collenction handle
     browserwind.on('close', function(){
         browserwind=null;
@@ -72,11 +64,7 @@ function nodeRceDisabled(){
             nodeIntegration: true
         }
     });
-    browserwind.loadURL(url.format({
-        pathname: path.join(__dirname, 'nodeIntegrationRce.html'),
-        protocol: 'file:',
-        slashes: true,
-    }));
+    browserwind.loadFile('nodeIntegrationRce.html');
     //Garbage collenction handle
     browserwind.on('close', function(){
         browserwind=null;
@@ -96,11 +84,7 @@ function sandboxDisabled(){
             preload: path.join(app.getAppPath(), 'preload.js')
         }
     });
-    browserwind.loadURL(url.format({
-        pathname: path.join(__dirname, 'sandboxRce.html'),
-        protocol: 'file:',
-        slashes: true,
-    }));
+    browserwind.loadFile('sandboxRce.html');
     //Garbage collenction handle
     browserwind.on('close', function(){
         browserwind=null;
@@ -119,11 +103,7 @@ function openExternalValidation(){
         }
     });
 
-    browserwind.loadURL(url.format({
-        pathname: path.join(__dirname, 'openExternal.html'),
-        protocol: 'file:',
-        slashes: true,
-    }));
+    browserwind.loadFile('openExternal.html');
     
     //Garbage collenction handle
     browserwind.on('close', function(){
@@ -142,11 +122,7 @@ function contextIsolationEnabled(){
         }
     });
 
-    browserwind.loadURL(url.format({
-        pathname: path.join(__dirname, 'nodeIntegrationRce.html'),
-        protocol: 'file:',
-        slashes: true,
-    }));
+    browserwind.loadFile('nodeIntegrationRce.html');
     
     //Garbage collenction handle
     browserwind.on('close', function(){
@@ -163,11 +139,7 @@ function bypassValidacaoJavaScript(){
         }
     });
 
-    browserwind.loadURL(url.format({
-        pathname: path.join(__dirname, 'bypassValidacao.html'),
-        protocol: 'file:',
-        slashes: true,
-    }));
+    browserwind.loadFile('bypassValidacao.html');
     
     //Garbage collenction handle
     browserwind.on('close', function(){
