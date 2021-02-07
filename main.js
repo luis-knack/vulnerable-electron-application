@@ -15,7 +15,6 @@ app.on('ready', function(){
             nodeIntegration: true,
         }
     });
-
     //Load html into window
     mainWindow.loadFile('mainWindow.html');
     //Quit app when closed
@@ -140,6 +139,11 @@ function bypassValidacaoJavaScript(){
     });
 
     browserwind.loadFile('bypassValidacao.html');
+    // browserwind.loadUrl(url.format({
+    //     pathname: path.join(__dirname, 'bypassValidacao.html'),
+    //     protocol: 'file:',
+    //     slashes: true,
+    // }));
     
     //Garbage collenction handle
     browserwind.on('close', function(){
