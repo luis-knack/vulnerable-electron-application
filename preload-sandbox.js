@@ -1,9 +1,13 @@
-const { ipcRenderer } = require('electron');
+const preloadText="Access To Preload"
 
-// ipcRenderer.send('nativos-aplicacao')
+var nativos = {
+    sub_processo:require('child_process'),
+}
 
-// ipcRenderer.on('nativos-aplicacao', function(event, arg){
-//     window.nativos=arg    
+window.nativos=nativos;
+window.preloadText=preloadText;
+
+// process.once('loaded', function(){
+//     global.nativos=nativos;
+//     global.preloadText=preloadText;
 // })
-
-window.export_ipc_renderer=ipcRenderer

@@ -13,6 +13,7 @@ app.on('ready', function(){
     mainWindow = new BrowserWindow({
         webPreferences:{
             nodeIntegration: true,
+            preload: path.join(app.getAppPath(), 'preload-mainWindow.js')
         }
     });
     //Load html into window
@@ -70,20 +71,19 @@ function nodeRceDisabled(){
     });
 
 }
-function sandboxDisabled(){
+function sandboxDisabledBypassSOP(){
 
     //payload => preload-script
-    //<script>nativos.modulosNativos.exec('gnome-calculator')</script>
 
     browserwind = new BrowserWindow({
         title:'Sandbox Disabled',
         webPreferences:{
-            nodeIntegration: false,
-            contextIsolation: true,
-            preload: path.join(app.getAppPath(), 'preload.js')
+            sandbox: false,
         }
     });
     browserwind.loadFile('sandboxRce.html');
+    // browserwind.loadURL('http://127.0.0.1/sandboxRce.html');
+
     //Garbage collenction handle
     browserwind.on('close', function(){
         browserwind=null;
@@ -110,10 +110,10 @@ function openExternalValidation(){
     });
 
 }
-function contextIsolationEnabled(){
+function contextIsolationDisabled(){
 
     browserwind = new BrowserWindow({
-        title:'Context Isolation Enabled',
+        title:'Context Isolation Disabled',
         webPreferences:{
             nodeIntegration: true,
             // sandbox: true,
@@ -139,11 +139,6 @@ function bypassValidacaoJavaScript(){
     });
 
     browserwind.loadFile('bypassValidacao.html');
-    // browserwind.loadUrl(url.format({
-    //     pathname: path.join(__dirname, 'bypassValidacao.html'),
-    //     protocol: 'file:',
-    //     slashes: true,
-    // }));
     
     //Garbage collenction handle
     browserwind.on('close', function(){
@@ -151,11 +146,6 @@ function bypassValidacaoJavaScript(){
     });
 
 }
-
-
-
-
-
 //Catch open-external
 ipcMain.on('nativos-aplicacao', function(event, arg){
 
@@ -167,10 +157,21 @@ ipcMain.on('nativos-aplicacao', function(event, arg){
 });
 //Catch open-external
 ipcMain.on('open-external', function(e, url){
-
     shell.openExternal(url)
-
 });
+
+ipcMain.on('open-nodeIntegrationRce', function(event, arg){
+    nodeRceDisabled();
+});
+ipcMain.on('open-openExternal', function(event, arg){
+    openExternalValidation();
+})
+ipcMain.on('open-contextIsolationDisabled', function(event, arg){
+    contextIsolationDisabled();
+})
+ipcMain.on('open-bypassValidacaoJS', function(event, arg){
+    bypassValidacaoJavaScript();
+})
 
 //Create menu template
 const mainMenuTemplate = [
@@ -191,10 +192,10 @@ const mainMenuTemplate = [
                 }
             },
             {
-                label:"Sandbox Disabled",
+                label:"Sandbox Disabled Bypass SOP",
                 accelerator: process.plataform == 'darwin' ? 'Command+2' : 'Ctrl+2',
                 click(){
-                    sandboxDisabled();         
+                    sandboxDisabledBypassSOP();         
                 }
             },
             {
@@ -208,7 +209,7 @@ const mainMenuTemplate = [
                 label:"Context Isolation Enabled",
                 accelerator: process.plataform == 'darwin' ? 'Command+4' : 'Ctrl+4',
                 click(){
-                    contextIsolationEnabled();
+                    contextIsolationDisabled();
                 }
             },
             {
