@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Sandbox Disabled</title>
+    <title>Sandbox Bypass SOP</title>
 </head>
 <body>
-    <!-- <p>Openning a new window using window.open</p> -->
-    <a href="http://127.0.0.1/sandbox-test.html"><h1>Url in a different origin</h1></a>
-    <!-- <script>window.open("http://127.0.0.1/sandbox-test.html")</script> -->
+	<script> 
+		const win = window.open("https://www.google.com");
+        win.eval("alert('document.domain: '+document.domain)");
+	</script>
 </body>
 </html>
