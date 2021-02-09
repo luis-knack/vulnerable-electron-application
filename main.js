@@ -13,11 +13,11 @@ app.on('ready', function(){
     mainWindow = new BrowserWindow({
         webPreferences:{
             nodeIntegration: true,
-            preload: path.join(app.getAppPath(), 'preload-mainWindow.js')
+            preload: path.join(app.getAppPath(), 'preloads/preload-mainWindow.js')
         }
     });
     //Load html into window
-    mainWindow.loadFile('mainWindow.html');
+    mainWindow.loadFile('web-pages/mainWindow.html');
     //Quit app when closed
     mainWindow.on('close', function(){
         app.quit();
@@ -45,7 +45,7 @@ function createAddWindow(){
     });
 
     //Load html into window
-    browserwind.loadFile('browserwind.html');
+    browserwind.loadFile('web-pages/browserwind.html');
     //Garbage collenction handle
     browserwind.on('close', function(){
         browserwind=null;
@@ -64,7 +64,7 @@ function nodeIntegrationEnabled(){
             nodeIntegration: true
         }
     });
-    browserwind.loadFile('nodeIntegrationRce.html');
+    browserwind.loadFile('web-pages/nodeIntegrationRce.html');
     
     //Garbage collenction handle
     browserwind.on('close', function(){
@@ -81,7 +81,7 @@ function sandboxDisabledBypassSOP(){
             sandbox: false,
         }
     });
-    browserwind.loadFile('bypassSopSandboxDisabled.html');
+    browserwind.loadFile('web-pages/bypassSopSandboxDisabled.html');
 
     //Garbage collenction handle
     browserwind.on('close', function(){
@@ -98,11 +98,11 @@ function openExternalValidation(){
             nodeIntegration: false,
             contextIsolation: false,
             sandbox: true,
-            preload: path.join(app.getAppPath(), 'preload-openExternal.js')
+            preload: path.join(app.getAppPath(), 'preloads/preload-openExternal.js')
         }
     });
 
-    browserwind.loadFile('openExternal.html');
+    browserwind.loadFile('web-pages/openExternal.html');
     
     //Garbage collenction handle
     browserwind.on('close', function(){
@@ -117,11 +117,11 @@ function contextIsolationDisabled(){
         webPreferences:{
             nodeIntegration: true,
             // sandbox: true,
-            preload: path.join(__dirname, 'preload-sandbox.js')
+            preload: path.join(__dirname, 'preloads/preload-sandbox.js')
         }
     });
 
-    browserwind.loadFile('nodeIntegrationRce.html');
+    browserwind.loadFile('web-pages/nodeIntegrationRce.html');
     
     //Garbage collenction handle
     browserwind.on('close', function(){
@@ -134,11 +134,11 @@ function bypassValidacaoJavaScript(){
     browserwind = new BrowserWindow({
         title:'Bypass Validacao Java Script',
         webPreferences:{
-            preload: path.join(__dirname, 'preload-bypass-validacao.js')
+            preload: path.join(__dirname, 'preloads/preload-bypass-validacao.js')
         }
     });
 
-    browserwind.loadFile('bypassValidacao.html');
+    browserwind.loadFile('web-pages/bypassValidacao.html');
     
     //Garbage collenction handle
     browserwind.on('close', function(){
@@ -152,11 +152,11 @@ function bypassNodeIntegrationByPreload(){
         title:'Bypass Node Integratin By Preload',
         webPreferences:{
             nodeIntegration: false,
-            preload: path.join(__dirname, 'preload-bypassNode.js')
+            preload: path.join(__dirname, 'preloads/preload-bypassNode.js')
         }
     });
 
-    browserwind.loadFile('nodeIntegrationRce.html');
+    browserwind.loadFile('web-pages/nodeIntegrationRce.html');
     
     //Garbage collenction handle
     browserwind.on('close', function(){
