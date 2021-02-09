@@ -172,6 +172,9 @@ ipcMain.on('open-contextIsolationDisabled', function(event, arg){
 ipcMain.on('open-bypassValidacaoJS', function(event, arg){
     bypassValidacaoJavaScript();
 })
+ipcMain.on('open-bypasssop', function(event, arg){
+    sandboxDisabledBypassSOP();
+})
 
 //Create menu template
 const mainMenuTemplate = [

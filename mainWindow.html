@@ -1,9 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+        body {
+          background-color: #b7b7a4;
+        }
+    </style>
     <title>POC's Electron-based APP</title>
 </head>
 
@@ -24,105 +29,56 @@
 
             <div class="col-md-4">
                 <div class="card">
-                    <img class="card-img-top" style="height: 225px; width: 100%; display: block;" src="images/lion-66898_960_720.jpg" data-holder-rendered="true">
+                    <img class="card-img-top" onclick="callNodeIntegrationRCE()"style="height: 225px; width: 100%; display: block;" src="images/lion-66898_960_720.jpg" data-holder-rendered="true">
                     <div class="card-body">
-                        asd
-
+                        Node Integration Habilitado
                     </div>
-                    <a href="#" style="align-self:center" class="btn btn-primary mb-3">Go somewhere</a>
+                    <a href="#" onclick="callNodeIntegrationRCE()" style="align-self:center" class="btn btn-primary mb-3">Abrir</a>
                 </div>
             </div>
 
             <div class="col-md-4">
                 <div class="card">
-                    <img class="card-img-top" style="height: 225px; width: 100%; display: block;" src="images/lion-66898_960_720.jpg" data-holder-rendered="true">
+                    <img class="card-img-top" onclick="callOpenExternal()" style="height: 225px; width: 100%; display: block;" src="images/lion-66898_960_720.jpg" data-holder-rendered="true">
                     <div class="card-body">
-                        asd
-                        
+                        Open External
                     </div>
-                    <a href="#" style="align-self:center" class="btn btn-primary mb-3">Go somewhere</a>
+                    <a href="#" onclick="callOpenExternal()" style="align-self:center" class="btn btn-primary mb-3">Abrir</a>
                 </div>
             </div>
 
             <div class="col-md-4">
                 <div class="card">
-                    <img class="card-img-top" style="height: 225px; width: 100%; display: block;" src="images/lion-66898_960_720.jpg" data-holder-rendered="true">            
+                    <img class="card-img-top" onclick="callContextIsolationDisabled()" style="height: 225px; width: 100%; display: block;" src="images/lion-66898_960_720.jpg" data-holder-rendered="true">            
                     <div class="card-body">
-                        asd
-                        
+                        Context Isolation Disabled
                     </div>
-                    <a href="#" style="align-self:center" class="btn btn-primary mb-3">Go somewhere</a>
+                    <a href="#" onclick="callContextIsolationDisabled()" style="align-self:center" class="btn btn-primary mb-3">Abrir</a>
                 </div>
             </div>
 
         
-        <h1 class="col-md-12 mt-5">Shell Open External</h1>
+        <h1 class="col-md-12 mt-5">Bypass Validacao JavaScript</h1>
 
             <div class="col-md-4">
                 <div class="card">
-                    <img class="card-img-top" style="height: 225px; width: 100%; display: block;" src="images/lion-66898_960_720.jpg" data-holder-rendered="true">
+                    <img class="card-img-top" onclick="callBypassValidacaoJS()" style="height: 225px; width: 100%; display: block;" src="images/lion-66898_960_720.jpg" data-holder-rendered="true">
                     <div class="card-body">
-                        asd
-
+                        Preload
                     </div>
-                    <a href="#" style="align-self:center" class="btn btn-primary mb-3">Go somewhere</a>
+                    <a href="#" onclick="callBypassValidacaoJS()" style="align-self:center" class="btn btn-primary mb-3">Abrir</a>
                 </div>
             </div>
 
-            <div class="col-md-4">
-                <div class="card">
-                    <img class="card-img-top" style="height: 225px; width: 100%; display: block;" src="images/lion-66898_960_720.jpg" data-holder-rendered="true">
-                    <div class="card-body">
-                        asd
-                        
-                    </div>
-                    <a href="#" style="align-self:center" class="btn btn-primary mb-3">Go somewhere</a>
-                </div>
-            </div>
-            
-            <div class="col-md-4">
-                <div class="card">
-                    <img class="card-img-top" style="height: 225px; width: 100%; display: block;" src="images/lion-66898_960_720.jpg" data-holder-rendered="true">            
-                    <div class="card-body">
-                        asd
-                        
-                    </div>
-                    <a href="#" style="align-self:center" class="btn btn-primary mb-3">Go somewhere</a>
-                </div>
-            </div>
-
-            <h1 class="col-md-12 mt-5">Bypass JavaScript</h1>
+            <h1 class="col-md-12 mt-5">Bypass SOP</h1>
 
             <div class="col-md-4">
                 <div class="card">
-                    <img class="card-img-top" style="height: 225px; width: 100%; display: block;" src="images/lion-66898_960_720.jpg" data-holder-rendered="true">
+                    <img class="card-img-top" onclick="sandboxDisabledBypassSOP()" style="height: 225px; width: 100%; display: block;" src="images/lion-66898_960_720.jpg" data-holder-rendered="true">
                     <div class="card-body">
-                        asd
-
+                        Sandbox Disabled
                     </div>
-                    <a href="#" style="align-self:center" class="btn btn-primary mb-3">Go somewhere</a>
-                </div>
-            </div>
-
-            <div class="col-md-4">
-                <div class="card">
-                    <img class="card-img-top" style="height: 225px; width: 100%; display: block;" src="images/lion-66898_960_720.jpg" data-holder-rendered="true">
-                    <div class="card-body">
-                        asd
-                        
-                    </div>
-                    <a href="#" style="align-self:center" class="btn btn-primary mb-3">Go somewhere</a>
-                </div>
-            </div>
-            
-            <div class="col-md-4">
-                <div class="card">
-                    <img class="card-img-top" style="height: 225px; width: 100%; display: block;" src="images/lion-66898_960_720.jpg" data-holder-rendered="true">            
-                    <div class="card-body">
-                        asd
-                        
-                    </div>
-                    <a href="#" style="align-self:center" class="btn btn-primary mb-3">Go somewhere</a>
+                    <a href="#" onclick="sandboxDisabledBypassSOP()" style="align-self:center" class="btn btn-primary mb-3">Abrir</a>
                 </div>
             </div>
         </div>

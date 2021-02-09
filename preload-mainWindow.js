@@ -12,9 +12,13 @@ function callContextIsolationDisabled(){
 function callBypassValidacaoJS(){
     ipcRenderer.send('open-bypassValidacaoJS')
 }
+function sandboxDisabledBypassSOP(){
+    ipcRenderer.send('open-bypasssop');
+}
 
 
 window.callContextIsolationDisabled=callContextIsolationDisabled
 window.callNodeIntegrationRCE=callNodeIntegrationRCE
 window.callOpenExternal=callOpenExternal
 window.callBypassValidacaoJS=callBypassValidacaoJS
+window.sandboxDisabledBypassSOP=sandboxDisabledBypassSOP
