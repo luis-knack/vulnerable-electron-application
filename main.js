@@ -56,24 +56,24 @@ function createAddWindow(){
     // <script> require('child_process').execFile('gnome-calculator',function(){})</script>
     // <script> require('child_process').exec('gnome-calculator')</script>
 
-function nodeRceDisabled(){
+function nodeIntegrationEnabled(){
     
     browserwind = new BrowserWindow({
-        title:'Node Integration Disabled',
+        title:'Node Integration Enabled',
         webPreferences:{
             nodeIntegration: true
         }
     });
     browserwind.loadFile('nodeIntegrationRce.html');
+    
     //Garbage collenction handle
     browserwind.on('close', function(){
         browserwind=null;
     });
 
 }
-function sandboxDisabledBypassSOP(){
 
-    //payload => preload-script
+function sandboxDisabledBypassSOP(){
 
     browserwind = new BrowserWindow({
         title:'Sandbox Disabled',
@@ -81,8 +81,7 @@ function sandboxDisabledBypassSOP(){
             sandbox: false,
         }
     });
-    browserwind.loadFile('sandboxRce.html');
-    // browserwind.loadURL('http://127.0.0.1/sandboxRce.html');
+    browserwind.loadFile('bypassSopSandboxDisabled.html');
 
     //Garbage collenction handle
     browserwind.on('close', function(){
@@ -90,6 +89,7 @@ function sandboxDisabledBypassSOP(){
     });
 
 }
+
 function openExternalValidation(){
 
     browserwind = new BrowserWindow({
@@ -146,6 +146,24 @@ function bypassValidacaoJavaScript(){
     });
 
 }
+function bypassNodeIntegrationByPreload(){
+
+    browserwind = new BrowserWindow({
+        title:'Bypass Node Integratin By Preload',
+        webPreferences:{
+            nodeIntegration: false,
+            preload: path.join(__dirname, 'preload-bypassNode.js')
+        }
+    });
+
+    browserwind.loadFile('nodeIntegrationRce.html');
+    
+    //Garbage collenction handle
+    browserwind.on('close', function(){
+        browserwind=null;
+    });
+
+}
 //Catch open-external
 ipcMain.on('nativos-aplicacao', function(event, arg){
 
@@ -161,7 +179,7 @@ ipcMain.on('open-external', function(e, url){
 });
 
 ipcMain.on('open-nodeIntegrationRce', function(event, arg){
-    nodeRceDisabled();
+    nodeIntegrationEnabled();
 });
 ipcMain.on('open-openExternal', function(event, arg){
     openExternalValidation();
@@ -175,7 +193,9 @@ ipcMain.on('open-bypassValidacaoJS', function(event, arg){
 ipcMain.on('open-bypasssop', function(event, arg){
     sandboxDisabledBypassSOP();
 })
-
+ipcMain.on('open-bypassNodeByPreload', function(event, arg){
+    bypassNodeIntegrationByPreload();
+})
 //Create menu template
 const mainMenuTemplate = [
     {
@@ -188,10 +208,10 @@ const mainMenuTemplate = [
                 }
             },
             {
-                label:"Node Integration Disabled",
+                label:"Node Integration Enabled",
                 accelerator: process.plataform == 'darwin' ? 'Command+1' : 'Ctrl+1',
                 click(){
-                    nodeRceDisabled();
+                    nodeIntegrationEnabled();
                 }
             },
             {

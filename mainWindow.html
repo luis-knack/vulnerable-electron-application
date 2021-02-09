@@ -6,7 +6,30 @@
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <style>
         body {
-          background-color: #b7b7a4;
+          background-color: #bdc3c7;
+        }
+        .btn-primary{
+            background-color: #dede39;
+            color:#586871;
+            font-weight: bold;
+            width: 120px;
+        }
+        .btn-primary:hover{
+            background-color: #e54170;
+            color:#dede39
+        }
+        li{
+            color: #dede39;
+        }
+        .card{
+            background-color: #586871;
+        }
+        .col-md-12{
+            color: #586871;
+            font-weight: bold;
+        }
+        strong{
+            color: #dede39
         }
     </style>
     <title>POC's Electron-based APP</title>
@@ -31,7 +54,7 @@
                 <div class="card">
                     <img class="card-img-top" onclick="callNodeIntegrationRCE()"style="height: 225px; width: 100%; display: block;" src="images/lion-66898_960_720.jpg" data-holder-rendered="true">
                     <div class="card-body">
-                        Node Integration Habilitado
+                        <li>nodeIntegration: true</li>
                     </div>
                     <a href="#" onclick="callNodeIntegrationRCE()" style="align-self:center" class="btn btn-primary mb-3">Abrir</a>
                 </div>
@@ -39,23 +62,27 @@
 
             <div class="col-md-4">
                 <div class="card">
-                    <img class="card-img-top" onclick="callOpenExternal()" style="height: 225px; width: 100%; display: block;" src="images/lion-66898_960_720.jpg" data-holder-rendered="true">
+                    <img class="card-img-top" onclick="bypassNodeIntegrationByPreload()" style="height: 225px; width: 100%; display: block;" src="images/lion-66898_960_720.jpg" data-holder-rendered="true">            
                     <div class="card-body">
-                        Open External
+                        <li>nodeIntegration: false</li>
+                        <li>preload: contain</li>
                     </div>
-                    <a href="#" onclick="callOpenExternal()" style="align-self:center" class="btn btn-primary mb-3">Abrir</a>
+                    <a href="#" onclick="bypassNodeIntegrationByPreload()" style="align-self:center" class="btn btn-primary mb-3">Abrir</a>
                 </div>
             </div>
 
             <div class="col-md-4">
                 <div class="card">
-                    <img class="card-img-top" onclick="callContextIsolationDisabled()" style="height: 225px; width: 100%; display: block;" src="images/lion-66898_960_720.jpg" data-holder-rendered="true">            
+                    <img class="card-img-top" onclick="callOpenExternal()" style="height: 225px; width: 100%; display: block;" src="images/lion-66898_960_720.jpg" data-holder-rendered="true">
                     <div class="card-body">
-                        Context Isolation Disabled
+                        <li>nodeIntegration: false</li>
+                        <li>contextIsolation: false</li>
+                        <li>sandbox: true</li>
                     </div>
-                    <a href="#" onclick="callContextIsolationDisabled()" style="align-self:center" class="btn btn-primary mb-3">Abrir</a>
+                    <a href="#" onclick="callOpenExternal()" style="align-self:center" class="btn btn-primary mb-3">Abrir</a>
                 </div>
             </div>
+
 
         
         <h1 class="col-md-12 mt-5">Bypass Validacao JavaScript</h1>
@@ -64,7 +91,7 @@
                 <div class="card">
                     <img class="card-img-top" onclick="callBypassValidacaoJS()" style="height: 225px; width: 100%; display: block;" src="images/lion-66898_960_720.jpg" data-holder-rendered="true">
                     <div class="card-body">
-                        Preload
+                        <li>Preload</li>
                     </div>
                     <a href="#" onclick="callBypassValidacaoJS()" style="align-self:center" class="btn btn-primary mb-3">Abrir</a>
                 </div>
@@ -76,7 +103,7 @@
                 <div class="card">
                     <img class="card-img-top" onclick="sandboxDisabledBypassSOP()" style="height: 225px; width: 100%; display: block;" src="images/lion-66898_960_720.jpg" data-holder-rendered="true">
                     <div class="card-body">
-                        Sandbox Disabled
+                        <li>Sandbox Disabled</li>
                     </div>
                     <a href="#" onclick="sandboxDisabledBypassSOP()" style="align-self:center" class="btn btn-primary mb-3">Abrir</a>
                 </div>

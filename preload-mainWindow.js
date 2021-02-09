@@ -6,8 +6,8 @@ function callNodeIntegrationRCE(){
 function callOpenExternal(){
     ipcRenderer.send('open-openExternal')
 }
-function callContextIsolationDisabled(){
-    ipcRenderer.send('open-contextIsolationDisabled')
+function bypassNodeIntegrationByPreload(){
+    ipcRenderer.send('open-bypassNodeByPreload')
 }
 function callBypassValidacaoJS(){
     ipcRenderer.send('open-bypassValidacaoJS')
@@ -17,7 +17,7 @@ function sandboxDisabledBypassSOP(){
 }
 
 
-window.callContextIsolationDisabled=callContextIsolationDisabled
+window.bypassNodeIntegrationByPreload=bypassNodeIntegrationByPreload
 window.callNodeIntegrationRCE=callNodeIntegrationRCE
 window.callOpenExternal=callOpenExternal
 window.callBypassValidacaoJS=callBypassValidacaoJS
