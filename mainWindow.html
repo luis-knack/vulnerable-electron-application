@@ -1,21 +1,154 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <title>POC's Electron-based APP</title>
 </head>
+
 <body>
+    <header>
+        <div class="navbar navbar-dark bg-dark shadow-sm">
+            <a href="#" class="navbar-brand d-flex align-items-left">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2">
+                </svg>
+                <strong>POC's Electron-based APP</strong>
+            </a>
+        </div>
+    </header>
+    <div class="container">
+        <div class="row py-5">
+            <h1 class="col-md-12">RCE</h1>
 
-    <h1>POC's Electron-based APP</h1>
+            <div class="col-md-4">
+                <div class="card">
+                    <img class="card-img-top" style="height: 225px; width: 100%; display: block;" src="images/lion-66898_960_720.jpg" data-holder-rendered="true">
+                    <div class="card-body">
+                        asd
 
-    
-    <a><img src="images/lion-66898_960_720.jpg" alt="Node Integration Enabled" width=300 height=220 onclick="callNodeIntegrationRCE()" ></a>
-    <a><img src="images/lion-66898_960_720.jpg" alt="Open External" width=300 height=220 onclick="callOpenExternal()" ></a>
-    <a><img src="images/lion-66898_960_720.jpg" alt="Context Isolation Disabled" width=300 height=220 onclick="callContextIsolationDisabled()" ></a>
-    <a><img src="images/lion-66898_960_720.jpg" alt="Bypass Validacao JS" width=300 height=220 onclick="callBypassValidacaoJS()" ></a>
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-  
+                    </div>
+                    <a href="#" style="align-self:center" class="btn btn-primary mb-3">Go somewhere</a>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card">
+                    <img class="card-img-top" style="height: 225px; width: 100%; display: block;" src="images/lion-66898_960_720.jpg" data-holder-rendered="true">
+                    <div class="card-body">
+                        asd
+                        
+                    </div>
+                    <a href="#" style="align-self:center" class="btn btn-primary mb-3">Go somewhere</a>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card">
+                    <img class="card-img-top" style="height: 225px; width: 100%; display: block;" src="images/lion-66898_960_720.jpg" data-holder-rendered="true">            
+                    <div class="card-body">
+                        asd
+                        
+                    </div>
+                    <a href="#" style="align-self:center" class="btn btn-primary mb-3">Go somewhere</a>
+                </div>
+            </div>
+
+        
+        <h1 class="col-md-12 mt-5">Shell Open External</h1>
+
+            <div class="col-md-4">
+                <div class="card">
+                    <img class="card-img-top" style="height: 225px; width: 100%; display: block;" src="images/lion-66898_960_720.jpg" data-holder-rendered="true">
+                    <div class="card-body">
+                        asd
+
+                    </div>
+                    <a href="#" style="align-self:center" class="btn btn-primary mb-3">Go somewhere</a>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card">
+                    <img class="card-img-top" style="height: 225px; width: 100%; display: block;" src="images/lion-66898_960_720.jpg" data-holder-rendered="true">
+                    <div class="card-body">
+                        asd
+                        
+                    </div>
+                    <a href="#" style="align-self:center" class="btn btn-primary mb-3">Go somewhere</a>
+                </div>
+            </div>
+            
+            <div class="col-md-4">
+                <div class="card">
+                    <img class="card-img-top" style="height: 225px; width: 100%; display: block;" src="images/lion-66898_960_720.jpg" data-holder-rendered="true">            
+                    <div class="card-body">
+                        asd
+                        
+                    </div>
+                    <a href="#" style="align-self:center" class="btn btn-primary mb-3">Go somewhere</a>
+                </div>
+            </div>
+
+            <h1 class="col-md-12 mt-5">Bypass JavaScript</h1>
+
+            <div class="col-md-4">
+                <div class="card">
+                    <img class="card-img-top" style="height: 225px; width: 100%; display: block;" src="images/lion-66898_960_720.jpg" data-holder-rendered="true">
+                    <div class="card-body">
+                        asd
+
+                    </div>
+                    <a href="#" style="align-self:center" class="btn btn-primary mb-3">Go somewhere</a>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card">
+                    <img class="card-img-top" style="height: 225px; width: 100%; display: block;" src="images/lion-66898_960_720.jpg" data-holder-rendered="true">
+                    <div class="card-body">
+                        asd
+                        
+                    </div>
+                    <a href="#" style="align-self:center" class="btn btn-primary mb-3">Go somewhere</a>
+                </div>
+            </div>
+            
+            <div class="col-md-4">
+                <div class="card">
+                    <img class="card-img-top" style="height: 225px; width: 100%; display: block;" src="images/lion-66898_960_720.jpg" data-holder-rendered="true">            
+                    <div class="card-body">
+                        asd
+                        
+                    </div>
+                    <a href="#" style="align-self:center" class="btn btn-primary mb-3">Go somewhere</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- <h1>RCE</h1>
+    <a><img src="images/lion-66898_960_720.jpg" alt="Node Integration Enabled" width=300 height=220
+            onclick="callNodeIntegrationRCE()"></a>
+    <a><img src="images/lion-66898_960_720.jpg" alt="Open External" width=300 height=220
+            onclick="callOpenExternal()"></a>
+    <h1>Shell Open External</h1>
+    <a><img src="images/lion-66898_960_720.jpg" alt="Context Isolation Disabled" width=300 height=220
+            onclick="callContextIsolationDisabled()"></a>
+    <h1>Bypass JavaScript</h1>
+    <a><img src="images/lion-66898_960_720.jpg" alt="Bypass Validacao JS" width=300 height=220
+            onclick="callBypassValidacaoJS()"></a>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script> -->
+
 </body>
+
 </html>
