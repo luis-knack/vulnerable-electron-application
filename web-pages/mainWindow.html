@@ -12,7 +12,7 @@
             background-color: #dede39;
             color:#586871;
             font-weight: bold;
-            width: 120px;
+            width: 75px;
         }
         .btn-primary:hover{
             background-color: #e54170;
@@ -54,9 +54,18 @@
                 <div class="card">
                     <img class="card-img-top" onclick="callNodeIntegrationRCE()"style="height: 225px; width: 100%; display: block;" src="../images/lion-66898_960_720.jpg" data-holder-rendered="true">
                     <div class="card-body">
-                        <li>nodeIntegration: true</li>
+                        <li>nodeIntegration: <b id="Fix_Node_Rce_b" style="color:#e54170; font-size:16px">true</b></li>
                     </div>
-                    <a href="#" onclick="callNodeIntegrationRCE()" style="align-self:center" class="btn btn-primary mb-3">Abrir</a>
+                    <div class="container">
+                        <div class="row py-2">
+                            <div class="col-md-6">
+                                <a href="#" onclick="callNodeIntegrationRCE()" style="align-self:center" class="btn btn-primary mb-3">Abrir</a>
+                            </div>
+                            <div class="col-md-6">
+                                <a href="#" onclick="changeNodeIntegration()" id="Fix_Node_Rce_a" style="align-self:center" class="btn btn-primary mb-3">Fix</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -83,7 +92,16 @@
                 </div>
             </div>
 
-
+            <div class="col-md-4">
+                <div class="card">
+                    <img class="card-img-top" onclick="bypassSandbox()" style="height: 225px; width: 100%; display: block;" src="../images/lion-66898_960_720.jpg" data-holder-rendered="true">
+                    <div class="card-body">
+                        <li>nodeIntegration: false</li>
+                        <li>sandbox: true</li>
+                    </div>
+                    <a href="#" onclick="bypassSandbox()" style="align-self:center" class="btn btn-primary mb-3">Abrir</a>
+                </div>
+            </div>
         
         <h1 class="col-md-12 mt-5">Bypass Validacao JavaScript</h1>
 
@@ -91,7 +109,7 @@
                 <div class="card">
                     <img class="card-img-top" onclick="callBypassValidacaoJS()" style="height: 225px; width: 100%; display: block;" src="../images/lion-66898_960_720.jpg" data-holder-rendered="true">
                     <div class="card-body">
-                        <li>Preload</li>
+                        <li>preload: contain</li>
                     </div>
                     <a href="#" onclick="callBypassValidacaoJS()" style="align-self:center" class="btn btn-primary mb-3">Abrir</a>
                 </div>
@@ -103,7 +121,8 @@
                 <div class="card">
                     <img class="card-img-top" onclick="sandboxDisabledBypassSOP()" style="height: 225px; width: 100%; display: block;" src="../images/lion-66898_960_720.jpg" data-holder-rendered="true">
                     <div class="card-body">
-                        <li>Sandbox Disabled</li>
+                        <li>nodeIntegration: false</li>
+                        <li>sandbox: false</li>
                     </div>
                     <a href="#" onclick="sandboxDisabledBypassSOP()" style="align-self:center" class="btn btn-primary mb-3">Abrir</a>
                 </div>
@@ -131,7 +150,23 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script> -->
+    <script>
+        function changeNodeIntegration(){
+            console.log(document.getElementById("Fix_Node_Rce_a").innerHTML);
+            console.log(document.getElementById("Fix_Node_Rce_b").innerHTML);
+            if(document.getElementById("Fix_Node_Rce_a").innerHTML==="Fix"){
+                document.getElementById("Fix_Node_Rce_a").innerHTML="Reset"
+                document.getElementById("Fix_Node_Rce_b").innerHTML="false"
+                document.getElementById("Fix_Node_Rce_b").style.color="#dede39";
+            }else{
+                document.getElementById("Fix_Node_Rce_a").innerHTML="Fix"
+                document.getElementById("Fix_Node_Rce_b").innerHTML="true"
+                document.getElementById("Fix_Node_Rce_b").style.color="#e54170";
+            }
 
+            changeNodeInt();
+        }
+    </script>
 </body>
 
 </html>

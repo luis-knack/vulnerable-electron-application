@@ -4,6 +4,8 @@ const path = require('path');
 
 const {app, BrowserWindow, Menu, ipcMain, shell} = require('electron');
 
+var node_int=true;
+
 let mainWindow;
 let browserwind;
 
@@ -12,7 +14,7 @@ app.on('ready', function(){
     //Create new window
     mainWindow = new BrowserWindow({
         webPreferences:{
-            nodeIntegration: true,
+            enableRemoteModule: true,
             preload: path.join(app.getAppPath(), 'preloads/preload-mainWindow.js')
         }
     });
@@ -31,37 +33,15 @@ app.on('ready', function(){
 
 });
 
-//Handle create add window
-function createAddWindow(){
-
-    //Create new window
-    browserwind = new BrowserWindow({
-        width:300,
-        height:200,
-        title:'Add Shopping List Item',
-        webPreferences:{
-            nodeIntegration: true
-        }
-    });
-
-    //Load html into window
-    browserwind.loadFile('web-pages/browserwind.html');
-    //Garbage collenction handle
-    browserwind.on('close', function(){
-        browserwind=null;
-    });
-}
-
-    // payload
-    // <script> require('child_process').execFile('gnome-calculator',function(){})</script>
-    // <script> require('child_process').exec('gnome-calculator')</script>
+// payload
+// <script> require('child_process').execFile('gnome-calculator',function(){})</script>
+// <script> require('child_process').exec('gnome-calculator')</script>
 
 function nodeIntegrationEnabled(){
-    
     browserwind = new BrowserWindow({
         title:'Node Integration Enabled',
         webPreferences:{
-            nodeIntegration: true
+            nodeIntegration: node_int
         }
     });
     browserwind.loadFile('web-pages/nodeIntegrationRce.html');
@@ -81,7 +61,7 @@ function sandboxDisabledBypassSOP(){
             sandbox: false,
         }
     });
-    browserwind.loadFile('web-pages/bypassSopSandboxDisabled.html');
+    browserwind.loadFile('web-pages/nodeIntegrationRce.html');
 
     //Garbage collenction handle
     browserwind.on('close', function(){
@@ -134,7 +114,7 @@ function bypassValidacaoJavaScript(){
     browserwind = new BrowserWindow({
         title:'Bypass Validacao Java Script',
         webPreferences:{
-            preload: path.join(__dirname, 'preloads/preload-bypass-validacao.js')
+            preload: path.join(__dirname, 'preloads/preload-bypassValidacao.js')
         }
     });
 
@@ -157,6 +137,25 @@ function bypassNodeIntegrationByPreload(){
     });
 
     browserwind.loadFile('web-pages/nodeIntegrationRce.html');
+    
+    //Garbage collenction handle
+    browserwind.on('close', function(){
+        browserwind=null;
+    });
+
+}
+function bypassSandbox(){
+
+    browserwind = new BrowserWindow({
+        title:'Bypass Sandbox',
+        webPreferences:{
+            sandbox: true,
+            enableRemoteModule: true,
+            preload: path.join(__dirname, 'preloads/preload-bypassSandbox.js')
+        }
+    });
+
+    browserwind.loadFile('web-pages/bypassSandbox.html');
     
     //Garbage collenction handle
     browserwind.on('close', function(){
@@ -190,12 +189,24 @@ ipcMain.on('open-contextIsolationDisabled', function(event, arg){
 ipcMain.on('open-bypassValidacaoJS', function(event, arg){
     bypassValidacaoJavaScript();
 })
-ipcMain.on('open-bypasssop', function(event, arg){
+ipcMain.on('open-bypassSop', function(event, arg){
     sandboxDisabledBypassSOP();
 })
 ipcMain.on('open-bypassNodeByPreload', function(event, arg){
     bypassNodeIntegrationByPreload();
 })
+ipcMain.on('open-bypassSandbox', function(event, arg){
+    bypassSandbox();
+})
+
+ipcMain.on('change-nodeInt', function(){
+    if(node_int){
+        node_int=false;
+    }else{
+        node_int=true;
+    }
+})
+
 //Create menu template
 const mainMenuTemplate = [
     {
