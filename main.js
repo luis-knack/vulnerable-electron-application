@@ -196,7 +196,7 @@ ipcMain.on('nativos-aplicacao', function(event, arg){
     browserwind.webContents.send('nativos-aplicacao', nativos)
     
 });
-//Catch open-external
+
 ipcMain.on('open-external', function(e, url){
     shell.openExternal(url)
 });
