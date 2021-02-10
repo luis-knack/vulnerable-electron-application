@@ -67,12 +67,9 @@
             <button type="submit" class="btn btn-primary" onclick="dom_xss()">Enter</button>
         <!-- </form> -->
     </div>
-    <p id=reflected></p>
     <script>
         function dom_xss() {
-            
-            // document.getElementById('reflected').write(document.getElementById("payload").value);
-            document.write("<h1>"+document.getElementById("payload").value+"</h1>")
+            document.write(document.getElementById("payload").value)
         }
     </script>
 
