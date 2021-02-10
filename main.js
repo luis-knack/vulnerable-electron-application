@@ -92,6 +92,7 @@ function openExternalValidation(){
     });
 
 }
+
 function openExternalNoValidation(){
 
     browserwind = new BrowserWindow({
@@ -100,7 +101,7 @@ function openExternalNoValidation(){
             nodeIntegration: false,
             contextIsolation: false,
             sandbox: true,
-            preload: path.join(app.getAppPath(), 'preloads/preload-openExternalNoValidation.js')
+            preload: path.join(app.getAppPath(),'preloads/preload-openExternalNoValidation.js')
         }
     });
 
