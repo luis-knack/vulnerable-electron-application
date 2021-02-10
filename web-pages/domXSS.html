@@ -4,7 +4,7 @@
 <head>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <title>Bypass Validacao JS</title>
+    <title>DOM XSS</title>
     <style>
         body {
           background-color: #bdc3c7;
@@ -52,25 +52,30 @@
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2">
                 </svg>
-                <strong>Bypass Validacao JS</strong>
+                <strong>DOM XSS</strong>
             </a>
         </div>
     </header>
     <div class="container mt-3">
-        <form>
+        <!-- <form> -->
             <div class="form-group row">
                 <div class="col-sm-10">
-                    <h4>Digite o Site:</h4>
-                    <textarea spellcheck="false" type="text"  id="site" placeholder="https://www.safe.com" autofocus class="form-control"></textarea>
+                    <h4>Digite o payload:</h4>
+                    <textarea spellcheck="false" type="text" id="payload" autofocus class="form-control"></textarea>
                 </div>
             </div>
-        <button type="submit" class="btn btn-primary" onclick="access_site()">enter</button>
-        </form>
+            <button type="submit" class="btn btn-primary" onclick="dom_xss()">Enter</button>
+        <!-- </form> -->
     </div>
+    <p id=reflected></p>
     <script>
-        function access_site(){
-            alert(accessSite(document.getElementById("site").value));
+        function dom_xss() {
+            
+            // document.getElementById('reflected').write(document.getElementById("payload").value);
+            document.write("<h1>"+document.getElementById("payload").value+"</h1>")
         }
     </script>
+
 </body>
+
 </html>

@@ -5,6 +5,44 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <title>Open External Validation</title>
+    <style>
+        body {
+          background-color: #bdc3c7;
+        }
+        .btn-primary{
+            background-color: #dede39;
+            color:#586871;
+            font-weight: bold;
+            width: 75px;
+        }
+        .btn-primary:hover{
+            background-color: #e54170;
+            color:#dede39
+        }
+        strong{
+            color: #dede39
+        }
+        h4{
+            color: #586871;
+            font-weight: bold;
+        }
+        textarea:focus{
+            border: 1px solid #586871 !important;
+            box-shadow: 0 0 3px #586871 !important;
+            -moz-box-shadow: 0 0 3px #586871 !important;
+            -webkit-box-shadow: 0 0 3px #586871 !important;
+            color: #586871 !important;
+            font-weight: bold !important;
+        }
+        textarea[type="text"]{
+            font-size:17px;
+            font-weight: bold;
+            color: #586871;
+        }
+        .form-control{
+            height: 50px;
+        }
+    </style>
 </head>
 
 <body>
@@ -23,7 +61,7 @@
             <div class="form-group row">
                 <div class="col-sm-10">
                     <h4>Digite o Site Para ser Aberto Externamente:</h4>
-                    <input type="text"  id="inputUsuario" placeholder="https://www.site.com" autofocus class="form-control">
+                    <textarea spellcheck="false" type="text" id="inputUsuario" placeholder="https://www.site.com" autofocus class="form-control"></textarea>
                 </div>
             </div>
         <button type="submit" class="btn btn-primary" onclick="funcOpenExternal(document.getElementById('inputUsuario').value)">enter</button>

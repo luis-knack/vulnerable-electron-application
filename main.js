@@ -44,7 +44,7 @@ function nodeIntegrationEnabled(){
             nodeIntegration: node_int
         }
     });
-    browserwind.loadFile('web-pages/nodeIntegrationRce.html');
+    browserwind.loadFile('web-pages/domXSS.html');
     
     //Garbage collenction handle
     browserwind.on('close', function(){
@@ -53,6 +53,8 @@ function nodeIntegrationEnabled(){
 
 }
 
+//payload
+//<script>const wind=window.open('https://www.tempest.com.br');wind.eval("alert(document.domain)");</script>
 function sandboxDisabledBypassSOP(){
 
     browserwind = new BrowserWindow({
@@ -61,7 +63,7 @@ function sandboxDisabledBypassSOP(){
             sandbox: false,
         }
     });
-    browserwind.loadFile('web-pages/nodeIntegrationRce.html');
+    browserwind.loadFile('web-pages/domXSS.html');
 
     //Garbage collenction handle
     browserwind.on('close', function(){
@@ -101,7 +103,7 @@ function contextIsolationDisabled(){
         }
     });
 
-    browserwind.loadFile('web-pages/nodeIntegrationRce.html');
+    browserwind.loadFile('web-pages/domXSS.html');
     
     //Garbage collenction handle
     browserwind.on('close', function(){
@@ -136,7 +138,7 @@ function bypassNodeIntegrationByPreload(){
         }
     });
 
-    browserwind.loadFile('web-pages/nodeIntegrationRce.html');
+    browserwind.loadFile('web-pages/domXSS.html');
     
     //Garbage collenction handle
     browserwind.on('close', function(){

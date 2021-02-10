@@ -31,6 +31,9 @@
         strong{
             color: #dede39
         }
+        h1{
+            background-color: #abb0b4
+        }
     </style>
     <title>POC's Electron-based APP</title>
 </head>
@@ -52,7 +55,7 @@
 
             <div class="col-md-4">
                 <div class="card">
-                    <img class="card-img-top" onclick="callNodeIntegrationRCE()"style="height: 225px; width: 100%; display: block;" src="../images/lion-66898_960_720.jpg" data-holder-rendered="true">
+                    <img class="card-img-top" onclick="callNodeIntegrationRCE()"style="height: 225px; width: 100%; display: block;" src="../images/nodeIntegrationEnabledRce.png" data-holder-rendered="true">
                     <div class="card-body">
                         <li>nodeIntegration: <b id="Fix_Node_Rce_b" style="color:#e54170; font-size:16px">true</b></li>
                     </div>
@@ -71,7 +74,7 @@
 
             <div class="col-md-4">
                 <div class="card">
-                    <img class="card-img-top" onclick="bypassNodeIntegrationByPreload()" style="height: 225px; width: 100%; display: block;" src="../images/lion-66898_960_720.jpg" data-holder-rendered="true">            
+                    <img class="card-img-top" onclick="bypassNodeIntegrationByPreload()" style="height: 225px; width: 100%; display: block;" src="../images/dangerousPreloadRce.png" data-holder-rendered="true">            
                     <div class="card-body">
                         <li>nodeIntegration: false</li>
                         <li>preload: contain</li>
@@ -82,7 +85,7 @@
 
             <div class="col-md-4">
                 <div class="card">
-                    <img class="card-img-top" onclick="callOpenExternal()" style="height: 225px; width: 100%; display: block;" src="../images/lion-66898_960_720.jpg" data-holder-rendered="true">
+                    <img class="card-img-top" onclick="callOpenExternal()" style="height: 225px; width: 100%; display: block;" src="../images/userInputInShellOpenExternal.png" data-holder-rendered="true">
                     <div class="card-body">
                         <li>nodeIntegration: false</li>
                         <li>contextIsolation: false</li>
@@ -92,7 +95,7 @@
                 </div>
             </div>
 
-            <div class="col-md-4">
+            <!-- <div class="col-md-4">
                 <div class="card">
                     <img class="card-img-top" onclick="bypassSandbox()" style="height: 225px; width: 100%; display: block;" src="../images/lion-66898_960_720.jpg" data-holder-rendered="true">
                     <div class="card-body">
@@ -101,13 +104,13 @@
                     </div>
                     <a href="#" onclick="bypassSandbox()" style="align-self:center" class="btn btn-primary mb-3">Abrir</a>
                 </div>
-            </div>
+            </div> -->
         
         <h1 class="col-md-12 mt-5">Bypass Validacao JavaScript</h1>
 
             <div class="col-md-4">
                 <div class="card">
-                    <img class="card-img-top" onclick="callBypassValidacaoJS()" style="height: 225px; width: 100%; display: block;" src="../images/lion-66898_960_720.jpg" data-holder-rendered="true">
+                    <img class="card-img-top" onclick="callBypassValidacaoJS()" style="height: 225px; width: 100%; display: block;" src="../images/prototypePollutionInPreloadScript.png" data-holder-rendered="true">
                     <div class="card-body">
                         <li>preload: contain</li>
                     </div>
@@ -119,7 +122,7 @@
 
             <div class="col-md-4">
                 <div class="card">
-                    <img class="card-img-top" onclick="sandboxDisabledBypassSOP()" style="height: 225px; width: 100%; display: block;" src="../images/lion-66898_960_720.jpg" data-holder-rendered="true">
+                    <img class="card-img-top" onclick="sandboxDisabledBypassSOP()" style="height: 225px; width: 100%; display: block;" src="../images/bypassSopUsingElectronApis.png" data-holder-rendered="true">
                     <div class="card-body">
                         <li>nodeIntegration: false</li>
                         <li>sandbox: false</li>
