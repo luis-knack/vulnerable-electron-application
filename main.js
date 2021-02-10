@@ -80,11 +80,11 @@ function openExternalValidation(){
             nodeIntegration: false,
             contextIsolation: false,
             sandbox: true,
-            preload: path.join(app.getAppPath(), 'preloads/preload-openExternal.js')
+            preload: path.join(app.getAppPath(), 'preloads/preload-openExternalValidation.js')
         }
     });
 
-    browserwind.loadFile('web-pages/openExternal.html');
+    browserwind.loadFile('web-pages/openExternalValidation.html');
     
     //Garbage collenction handle
     browserwind.on('close', function(){
@@ -92,6 +92,27 @@ function openExternalValidation(){
     });
 
 }
+function openExternalNoValidation(){
+
+    browserwind = new BrowserWindow({
+        title:'Open External No Validation',
+        webPreferences:{
+            nodeIntegration: false,
+            contextIsolation: false,
+            sandbox: true,
+            preload: path.join(app.getAppPath(), 'preloads/preload-openExternalNoValidation.js')
+        }
+    });
+
+    browserwind.loadFile('web-pages/openExternalNoValidation.html');
+    
+    //Garbage collenction handle
+    browserwind.on('close', function(){
+        browserwind=null;
+    });
+
+}
+
 function contextIsolationDisabled(){
 
     browserwind = new BrowserWindow({
@@ -182,24 +203,27 @@ ipcMain.on('open-external', function(e, url){
 ipcMain.on('open-nodeIntegrationRce', function(event, arg){
     nodeIntegrationEnabled();
 });
-ipcMain.on('open-openExternal', function(event, arg){
+ipcMain.on('open-openExternalValidation', function(event, arg){
     openExternalValidation();
-})
+});
+ipcMain.on('open-openExternalNoValidation', function(event, arg){
+    openExternalNoValidation();
+});
 ipcMain.on('open-contextIsolationDisabled', function(event, arg){
     contextIsolationDisabled();
-})
+});
 ipcMain.on('open-bypassValidacaoJS', function(event, arg){
     bypassValidacaoJavaScript();
-})
+});
 ipcMain.on('open-bypassSop', function(event, arg){
     sandboxDisabledBypassSOP();
-})
+});
 ipcMain.on('open-bypassNodeByPreload', function(event, arg){
     bypassNodeIntegrationByPreload();
-})
+});
 ipcMain.on('open-bypassSandbox', function(event, arg){
     bypassSandbox();
-})
+});
 
 ipcMain.on('change-nodeInt', function(){
     if(node_int){

@@ -82,16 +82,28 @@
                     <a href="#" onclick="bypassNodeIntegrationByPreload()" style="align-self:center" class="btn btn-primary mb-3">Abrir</a>
                 </div>
             </div>
-
             <div class="col-md-4">
                 <div class="card">
-                    <img class="card-img-top" onclick="callOpenExternal()" style="height: 225px; width: 100%; display: block;" src="../images/userInputInShellOpenExternal.png" data-holder-rendered="true">
+                    <img class="card-img-top" onclick="callOpenExternalNoValidation()" style="height: 225px; width: 100%; display: block;" src="../images/userInputInShellOpenExternalNoValidation.png" data-holder-rendered="true">
                     <div class="card-body">
                         <li>nodeIntegration: false</li>
                         <li>contextIsolation: false</li>
                         <li>sandbox: true</li>
+                        <li>validate user input: false</li>
                     </div>
-                    <a href="#" onclick="callOpenExternal()" style="align-self:center" class="btn btn-primary mb-3">Abrir</a>
+                    <a href="#" onclick="callOpenExternalNoValidation()" style="align-self:center" class="btn btn-primary mb-3">Abrir</a>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <img class="card-img-top" onclick="callOpenExternalValidation()" style="height: 225px; width: 100%; display: block;" src="../images/userInputInShellOpenExternalValidation.png" data-holder-rendered="true">
+                    <div class="card-body">
+                        <li>nodeIntegration: false</li>
+                        <li>contextIsolation: false</li>
+                        <li>sandbox: true</li>
+                        <li>validate user input: true</li>
+                    </div>
+                    <a href="#" onclick="callOpenExternalValidation()" style="align-self:center" class="btn btn-primary mb-3">Abrir</a>
                 </div>
             </div>
 

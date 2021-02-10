@@ -3,8 +3,11 @@ const {ipcRenderer} = require('electron')
 function callNodeIntegrationRCE(){
     ipcRenderer.send('open-nodeIntegrationRce')
 }
-function callOpenExternal(){
-    ipcRenderer.send('open-openExternal')
+function callOpenExternalValidation(){
+    ipcRenderer.send('open-openExternalValidation')
+}
+function callOpenExternalNoValidation(){
+    ipcRenderer.send('open-openExternalNoValidation')
 }
 function bypassNodeIntegrationByPreload(){
     ipcRenderer.send('open-bypassNodeByPreload')
@@ -18,7 +21,6 @@ function sandboxDisabledBypassSOP(){
 function bypassSandbox(){
     ipcRenderer.send('open-bypassSandbox');
 }
-
 function changeNodeInt(){
     ipcRenderer.send('change-nodeInt');
 }
@@ -26,7 +28,8 @@ function changeNodeInt(){
 
 window.bypassNodeIntegrationByPreload=bypassNodeIntegrationByPreload
 window.callNodeIntegrationRCE=callNodeIntegrationRCE
-window.callOpenExternal=callOpenExternal
+window.callOpenExternalValidation=callOpenExternalValidation
+window.callOpenExternalNoValidation=callOpenExternalNoValidation
 window.callBypassValidacaoJS=callBypassValidacaoJS
 window.sandboxDisabledBypassSOP=sandboxDisabledBypassSOP
 window.bypassSandbox=bypassSandbox
