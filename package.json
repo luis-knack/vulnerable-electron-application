@@ -1,14 +1,23 @@
 {
-  "name": "poc-electron",
+  "name": "poc-electron-vulnerabilities",
   "version": "1.0.0",
-  "description": "POC Electron Vulnerabilities",
+  "description": "",
   "main": "main.js",
   "scripts": {
     "start": "electron ."
   },
-  "author": "Luis Henrique",
-  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/luis-knack/poc-electron-vulnerabilities.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/luis-knack/poc-electron-vulnerabilities/issues"
+  },
+  "homepage": "https://github.com/luis-knack/poc-electron-vulnerabilities#readme",
   "devDependencies": {
-    "electron": "^11.2.1"
+    "electron": "^11.2.3"
   }
 }
