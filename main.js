@@ -41,7 +41,7 @@ function nodeIntegrationEnabled(){
     browserwind = new BrowserWindow({
         title:'Node Integration Enabled',
         webPreferences:{
-            nodeIntegration: node_int
+            nodeIntegration: true
         }
     });
     browserwind.loadFile('web-pages/domXSS.html');
@@ -187,6 +187,25 @@ function bypassSandbox(){
     });
 
 }
+
+function remoteExportedRCE(){
+    browserwind = new BrowserWindow({
+        title:'Remote Module Exported RCE',
+        webPreferences:{
+            enableRemoteModule: true,
+            nodeIntegration: false,
+            sandbox: true,
+            preload: path.join(app.getAppPath(), 'preloads/preload-remoteExported.js')
+        }
+    });
+    browserwind.loadFile('web-pages/domXSS.html');
+    
+    //Garbage collenction handle
+    browserwind.on('close', function(){
+        browserwind=null;
+    });
+
+}
 //Catch open-external
 ipcMain.on('nativos-aplicacao', function(event, arg){
 
@@ -224,6 +243,9 @@ ipcMain.on('open-bypassNodeByPreload', function(event, arg){
 });
 ipcMain.on('open-bypassSandbox', function(event, arg){
     bypassSandbox();
+});
+ipcMain.on('open-remoteExported', function(){
+    remoteExportedRCE();
 });
 
 ipcMain.on('change-nodeInt', function(){
