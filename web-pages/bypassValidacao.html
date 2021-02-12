@@ -2,23 +2,77 @@
 <html lang="pt-br">
 
 <head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <title>Bypass Validacao JS</title>
+    <style>
+        body {
+          background-color: #bdc3c7;
+        }
+        .btn-primary{
+            background-color: #dede39;
+            color:#586871;
+            font-weight: bold;
+            width: 75px;
+        }
+        .btn-primary:hover{
+            background-color: #e54170;
+            color:#dede39
+        }
+        strong{
+            color: #dede39
+        }
+        h4{
+            color: #586871;
+            font-weight: bold;
+        }
+        textarea:focus{
+            border: 1px solid #586871 !important;
+            box-shadow: 0 0 3px #586871 !important;
+            -moz-box-shadow: 0 0 3px #586871 !important;
+            -webkit-box-shadow: 0 0 3px #586871 !important;
+            color: #586871 !important;
+            font-weight: bold !important;
+        }
+        textarea[type="text"]{
+            font-size:17px;
+            font-weight: bold;
+            color: #586871;
+        }
+        .form-control{
+            height: 50px;
+        }
+    </style>
 </head>
 
 <body>
     <header>
-        <strong>Bypass Validacao JS</strong>
-    </header>
-        <div>
-            <h4>Digite o Site:</h4>
-            <textarea spellcheck="false" type="text"  id="site" placeholder="https://www.safe.com" autofocus class="form-control"></textarea>
+        <div class="navbar navbar-dark bg-dark shadow-sm">
+            <a href="#" class="navbar-brand d-flex align-items-left">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2">
+                </svg>
+                <strong>Bypass Validacao JS</strong>
+            </a>
         </div>
-        <button type="submit" class="btn btn-primary" onclick="access_site()">enter</button>
+    </header>
+    <div class="container mt-3">
+        <!-- <form> -->
+            <div class="form-group row">
+                <div class="col-sm-10">
+                    <h4>Digite o Site:</h4>
+                    <textarea spellcheck="false" type="text"  id="site" placeholder="https://www.safe.com" autofocus class="form-control"></textarea>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary" onclick="access_site()">Enter</button>
+        <!-- </form> -->
     </div>
     <script>
         function access_site(){
             alert(accessSite(document.getElementById("site").value));
         }
     </script>
+
 </body>
+
 </html>
