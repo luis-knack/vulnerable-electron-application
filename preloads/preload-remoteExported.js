@@ -1,3 +1,3 @@
-const {remote} = require('electron')
+var remote = require('electron').remote
 
 window.remote=remote
