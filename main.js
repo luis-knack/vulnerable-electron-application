@@ -195,11 +195,14 @@ function remoteExportedRCE(){
             enableRemoteModule: true,
             nodeIntegration: false,
             sandbox: true,
-            preload: path.join(app.getAppPath(), 'preloads/preload-remoteExported.js')
+            preload: path.join(app.getAppPath(), 
+            'preloads/preload-remoteExported.js'),
         }
     });
     browserwind.loadFile('web-pages/domXSS.html');
     
+
+
     //Garbage collenction handle
     browserwind.on('close', function(){
         browserwind=null;
