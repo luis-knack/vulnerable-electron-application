@@ -84,6 +84,18 @@
             </div>
             <div class="col-md-4">
                 <div class="card">
+                    <img class="card-img-top" onclick="remoteExported()" style="height: 225px; width: 100%; display: block;" src="../images/remoteModuleExported.png" data-holder-rendered="true">
+                    <div class="card-body">
+                        <li>nodeIntegration: false</li>
+                        <li>sandbox: true</li>
+                        <li>enableRemoteModule: true</li>
+                        <li>preload: exporting remote</li>
+                    </div>
+                    <a href="#" onclick="remoteExported()" style="align-self:center" class="btn btn-primary mb-3">Abrir</a>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
                     <img class="card-img-top" onclick="callOpenExternalNoValidation()" style="height: 225px; width: 100%; display: block;" src="../images/userInputInShellOpenExternalNoValidation.png" data-holder-rendered="true">
                     <div class="card-body">
                         <li>nodeIntegration: false</li>
@@ -104,18 +116,6 @@
                         <li>validate user input: true</li>
                     </div>
                     <a href="#" onclick="callOpenExternalValidation()" style="align-self:center" class="btn btn-primary mb-3">Abrir</a>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card">
-                    <img class="card-img-top" onclick="remoteExported()" style="height: 225px; width: 100%; display: block;" src="../images/no-image.png" data-holder-rendered="true">
-                    <div class="card-body">
-                        <li>nodeIntegration: false</li>
-                        <li>sandbox: true</li>
-                        <li>enableRemoteModule: true</li>
-                        <li>preload: exporting remote</li>
-                    </div>
-                    <a href="#" onclick="remoteExported()" style="align-self:center" class="btn btn-primary mb-3">Abrir</a>
                 </div>
             </div>
             <!-- <div class="col-md-4">
