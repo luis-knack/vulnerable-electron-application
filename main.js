@@ -209,18 +209,10 @@ function remoteExportedRCE(){
     });
 
 }
-//Catch open-external
-ipcMain.on('nativos-aplicacao', function(event, arg){
 
-    nativos={
-        modulosNativos:require('child_process'),
-    }
-    browserwind.webContents.send('nativos-aplicacao', nativos)
-    
-});
-
+const {shell} = require('electron');
 ipcMain.on('open-external', function(e, url){
-    shell.openExternal(url)
+    shell.openExternal(url);
 });
 
 ipcMain.on('open-nodeIntegrationRce', function(event, arg){
@@ -260,64 +252,7 @@ ipcMain.on('change-nodeInt', function(){
 })
 
 //Create menu template
-const mainMenuTemplate = [
-    {
-        label:'File',
-        submenu:[
-            {
-                label:"Add Item",
-                click(){
-                    createAddWindow();
-                }
-            },
-            {
-                label:"Node Integration Enabled",
-                accelerator: process.plataform == 'darwin' ? 'Command+1' : 'Ctrl+1',
-                click(){
-                    nodeIntegrationEnabled();
-                }
-            },
-            {
-                label:"Sandbox Disabled Bypass SOP",
-                accelerator: process.plataform == 'darwin' ? 'Command+2' : 'Ctrl+2',
-                click(){
-                    sandboxDisabledBypassSOP();         
-                }
-            },
-            {
-                label:"Open External Validation",
-                accelerator: process.plataform == 'darwin' ? 'Command+3' : 'Ctrl+3',
-                click(){
-                    openExternalValidation();
-                }
-            },
-            {
-                label:"Context Isolation Enabled",
-                accelerator: process.plataform == 'darwin' ? 'Command+4' : 'Ctrl+4',
-                click(){
-                    contextIsolationDisabled();
-                }
-            },
-            {
-                label:"Bypass JavaScript Validation",
-                accelerator: process.plataform == 'darwin' ? 'Command+5' : 'Ctrl+5',
-                click(){
-                    bypassValidacaoJavaScript();
-                }
-            },
-            // {
-            //     label:"Clear Items"
-            // },
-            {
-                label:"Quit",
-                accelerator: process.plataform == 'darwin' ? 'Command+Q' : 'Ctrl+Q',
-                click(){
-                    app.quit();
-                }
-            }
-        ]
-    }
-];
+const mainMenuTemplate = [];
 
 
 // If mac, add empty object
