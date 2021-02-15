@@ -2,69 +2,18 @@
 <html lang="pt-br">
 
 <head>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <title>DOM XSS</title>
-    <style>
-        body {
-          background-color: #bdc3c7;
-        }
-        .btn-primary{
-            background-color: #dede39;
-            color:#586871;
-            font-weight: bold;
-            width: 75px;
-        }
-        .btn-primary:hover{
-            background-color: #e54170;
-            color:#dede39
-        }
-        strong{
-            color: #dede39
-        }
-        h4{
-            color: #586871;
-            font-weight: bold;
-        }
-        textarea:focus{
-            border: 1px solid #586871 !important;
-            box-shadow: 0 0 3px #586871 !important;
-            -moz-box-shadow: 0 0 3px #586871 !important;
-            -webkit-box-shadow: 0 0 3px #586871 !important;
-            color: #586871 !important;
-            font-weight: bold !important;
-        }
-        textarea[type="text"]{
-            font-size:17px;
-            font-weight: bold;
-            color: #586871;
-        }
-        .form-control{
-            height: 50px;
-        }
-    </style>
 </head>
 
 <body>
     <header>
-        <div class="navbar navbar-dark bg-dark shadow-sm">
-            <a href="#" class="navbar-brand d-flex align-items-left">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2">
-                </svg>
-                <strong>DOM XSS</strong>
-            </a>
-        </div>
+        <strong>DOM XSS</strong>
     </header>
-    <div class="container mt-3">
-        <div class="form-group row">
-            <div class="col-sm-10">
-                <h4>Digite o payload:</h4>
-                <textarea spellcheck="false" type="text" id="payload" autofocus class="form-control"></textarea>
-            </div>
+        <div>
+            <h4>Digite o payload:</h4>
+            <textarea spellcheck="false" type="text" id="payload" autofocus class="form-control"></textarea>
+            <button type="submit" class="btn btn-primary" onclick="dom_xss()">Enter</button>
         </div>
-        <button type="submit" class="btn btn-primary" onclick="dom_xss()">Enter</button>
-    </div>
     <script>
         function dom_xss() {
             document.write(document.getElementById("payload").value)
