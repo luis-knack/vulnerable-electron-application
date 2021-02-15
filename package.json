@@ -1,5 +1,5 @@
 {
-  "name": "poc-electron-vulnerabilities",
+  "name": "vulnerable-electron-application",
   "version": "1.0.0",
   "description": "",
   "main": "main.js",
@@ -8,15 +8,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/luis-knack/poc-electron-vulnerabilities.git"
+    "url": "git+https://github.com/luis-knack/vulnerable-electron-application.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/luis-knack/poc-electron-vulnerabilities/issues"
+    "url": "https://github.com/luis-knack/vulnerable-electron-application/issues"
   },
-  "homepage": "https://github.com/luis-knack/poc-electron-vulnerabilities#readme",
+  "homepage": "https://github.com/luis-knack/vulnerable-electron-application#readme",
   "devDependencies": {
     "electron": "^11.2.3"
   }
