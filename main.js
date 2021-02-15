@@ -120,7 +120,6 @@ function contextIsolationDisabled(){
         title:'Context Isolation Disabled',
         webPreferences:{
             nodeIntegration: true,
-            // sandbox: true,
             preload: path.join(__dirname, 'preloads/preload-sandbox.js')
         }
     });
