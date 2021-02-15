@@ -210,7 +210,6 @@ function remoteExportedRCE(){
 
 }
 
-const {shell} = require('electron');
 ipcMain.on('open-external', function(e, url){
     shell.openExternal(url);
 });
