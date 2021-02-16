@@ -233,7 +233,7 @@ ipcMain.on('open-remoteExported', function(){
 //     }
 // })
 
-
+const mainMenuTemplate = [];
 
 if(process.plataform == 'darwin'){
     mainMenuTemplate.unshift({});
