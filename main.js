@@ -1,34 +1,29 @@
-// const electron = require('electron');
-const url = require('url');
 const path = require('path');
 
 const {app, BrowserWindow, Menu, ipcMain, shell} = require('electron');
 
-var node_int=true;
+// var node_int=true;
 
 let mainWindow;
 let browserwind;
 
-// Listen for app to be ready
 app.on('ready', function(){
-    //Create new window
+
     mainWindow = new BrowserWindow({
         webPreferences:{
             enableRemoteModule: true,
             preload: path.join(app.getAppPath(), 'preloads/preload-mainWindow.js')
         }
     });
-    //Load html into window
+    
     mainWindow.loadFile('web-pages/mainWindow.html');
-    //Quit app when closed
+
     mainWindow.on('close', function(){
         app.quit();
     }); 
 
-    //Build menu from template
-    const mainMenu = Menu.buildFromTemplate(mainMenuTemplate);
+    const mainMenu = Menu.buildFromTemplate([]);
 
-    //Insert menu
     Menu.setApplicationMenu(mainMenu);
 
 });
@@ -46,7 +41,6 @@ function nodeIntegrationEnabled(){
     });
     browserwind.loadFile('web-pages/domXSS.html');
     
-    //Garbage collenction handle
     browserwind.on('close', function(){
         browserwind=null;
     });
@@ -65,7 +59,6 @@ function sandboxDisabledBypassSOP(){
     });
     browserwind.loadFile('web-pages/domXSS.html');
 
-    //Garbage collenction handle
     browserwind.on('close', function(){
         browserwind=null;
     });
@@ -86,7 +79,6 @@ function openExternalValidation(){
 
     browserwind.loadFile('web-pages/openExternalValidation.html');
     
-    //Garbage collenction handle
     browserwind.on('close', function(){
         browserwind=null;
     });
@@ -107,7 +99,6 @@ function openExternalNoValidation(){
 
     browserwind.loadFile('web-pages/openExternalNoValidation.html');
     
-    //Garbage collenction handle
     browserwind.on('close', function(){
         browserwind=null;
     });
@@ -126,7 +117,6 @@ function contextIsolationDisabled(){
 
     browserwind.loadFile('web-pages/domXSS.html');
     
-    //Garbage collenction handle
     browserwind.on('close', function(){
         browserwind=null;
     });
@@ -143,7 +133,6 @@ function bypassValidacaoJavaScript(){
 
     browserwind.loadFile('web-pages/bypassValidacao.html');
     
-    //Garbage collenction handle
     browserwind.on('close', function(){
         browserwind=null;
     });
@@ -161,7 +150,6 @@ function bypassNodeIntegrationByPreload(){
 
     browserwind.loadFile('web-pages/domXSS.html');
     
-    //Garbage collenction handle
     browserwind.on('close', function(){
         browserwind=null;
     });
@@ -180,7 +168,6 @@ function bypassSandbox(){
 
     browserwind.loadFile('web-pages/bypassSandbox.html');
     
-    //Garbage collenction handle
     browserwind.on('close', function(){
         browserwind=null;
     });
@@ -200,9 +187,6 @@ function remoteExportedRCE(){
     });
     browserwind.loadFile('web-pages/domXSS.html');
     
-
-
-    //Garbage collenction handle
     browserwind.on('close', function(){
         browserwind=null;
     });
@@ -241,25 +225,20 @@ ipcMain.on('open-remoteExported', function(){
     remoteExportedRCE();
 });
 
-ipcMain.on('change-nodeInt', function(){
-    if(node_int){
-        node_int=false;
-    }else{
-        node_int=true;
-    }
-})
-
-//Create menu template
-const mainMenuTemplate = [];
+// ipcMain.on('change-nodeInt', function(){
+//     if(node_int){
+//         node_int=false;
+//     }else{
+//         node_int=true;
+//     }
+// })
 
 
-// If mac, add empty object
+
 if(process.plataform == 'darwin'){
-    //add {} to the array's beginning
     mainMenuTemplate.unshift({});
 }
 
-//Add developer tools item if not in prod
 if(process.env.NODE_ENV !== 'production'){
     mainMenuTemplate.push({
         label:'Dev Tools',

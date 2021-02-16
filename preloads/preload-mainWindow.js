@@ -24,9 +24,9 @@ function bypassSandbox(){
 function remoteExported(){
     ipcRenderer.send('open-remoteExported');
 }
-function changeNodeInt(){
-    ipcRenderer.send('change-nodeInt');
-}
+// function changeNodeInt(){
+//     ipcRenderer.send('change-nodeInt');
+// }
 
 window.bypassNodeIntegrationByPreload=bypassNodeIntegrationByPreload
 window.callNodeIntegrationRCE=callNodeIntegrationRCE
@@ -36,4 +36,4 @@ window.callBypassValidacaoJS=callBypassValidacaoJS
 window.sandboxDisabledBypassSOP=sandboxDisabledBypassSOP
 window.bypassSandbox=bypassSandbox
 window.remoteExported=remoteExported
-window.changeNodeInt=changeNodeInt
+// window.changeNodeInt=changeNodeInt
