@@ -22,7 +22,7 @@ app.on('ready', function(){
         app.quit();
     }); 
 
-    const mainMenu = Menu.buildFromTemplate([]);
+    const mainMenu = Menu.buildFromTemplate(mainMenuTemplate);
 
     Menu.setApplicationMenu(mainMenu);
 
