@@ -36,6 +36,7 @@ function nodeIntegrationEnabled(){
     browserwind = new BrowserWindow({
         title:'Node Integration Enabled',
         webPreferences:{
+            contextIsolation: false,
             nodeIntegration: true
         }
     });
@@ -54,6 +55,7 @@ function sandboxDisabledBypassSOP(){
     browserwind = new BrowserWindow({
         title:'Sandbox Disabled',
         webPreferences:{
+            contextIsolation: false,
             sandbox: false,
         }
     });
@@ -127,6 +129,7 @@ function bypassValidacaoJavaScript(){
     browserwind = new BrowserWindow({
         title:'Bypass Validacao Java Script',
         webPreferences:{
+            contextIsolation: false,
             preload: path.join(__dirname, 'preloads/preload-bypassValidacao.js')
         }
     });
@@ -143,6 +146,7 @@ function bypassNodeIntegrationByPreload(){
     browserwind = new BrowserWindow({
         title:'Bypass Node Integratin By Preload',
         webPreferences:{
+            contextIsolation: false,
             nodeIntegration: false,
             preload: path.join(__dirname, 'preloads/preload-bypassNode.js')
         }
