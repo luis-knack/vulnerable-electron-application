@@ -21,6 +21,7 @@ app.on('ready', function(){
     mainWindow = new BrowserWindow({
         webPreferences:{
             enableRemoteModule: true,
+            contextIsolation: false,
             preload: path.join(app.getAppPath(), 'preloads/preload-mainWindow.js')
         }
     });
