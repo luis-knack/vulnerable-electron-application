@@ -57,10 +57,13 @@
                 <div class="card">
                     <img class="card-img-top" onclick="callNodeIntegrationRCE()"style="height: 225px; width: 100%; display: block;" src="../images/nodeIntegrationEnabledRce.png" data-holder-rendered="true">
                     <div class="card-body">
-                        <li>nodeIntegration: true</li>
-                        <!-- <li>nodeIntegration: <b id="Fix_Node_Rce_b" style="color:#e54170; font-size:16px">true</b></li> -->
+                        <!-- <li>nodeIntegration: true</li> -->
+                        <li>nodeIntegration: <b id="Fix_Node_Rce_Config" style="color:#e54170; font-size:16px">true</b></li>
                     </div>
-                    <a href="#" onclick="callNodeIntegrationRCE()" style="align-self:center" class="btn btn-primary mb-3">Abrir</a>
+                    <div class="col-md-12">
+                        <a href="#" onclick="callNodeIntegrationRCE()" style="margin-right: 10px;margin-left: 5px;" class="btn btn-primary mb-3 col-md-6">Abrir</a>
+                        <a href="#" id="Fix_Node_Rce_Fix" onclick="changeNodeIntegration()" class="btn btn-primary mb-3 col-md-6">Fix</a>
+                    </div>
                 </div>
             </div>
 
@@ -74,18 +77,6 @@
                     <a href="#" onclick="bypassNodeIntegrationByPreload()" style="align-self:center" class="btn btn-primary mb-3">Abrir</a>
                 </div>
             </div>
-            <!-- <div class="col-md-4">
-                <div class="card">
-                    <img class="card-img-top" onclick="remoteExported()" style="height: 225px; width: 100%; display: block;" src="../images/remoteModuleExported.png" data-holder-rendered="true">
-                    <div class="card-body">
-                        <li>nodeIntegration: false</li>
-                        <li>sandbox: true</li>
-                        <li>enableRemoteModule: true</li>
-                        <li>preload: exporting remote</li>
-                    </div>
-                    <a href="#" onclick="remoteExported()" style="align-self:center" class="btn btn-primary mb-3">Abrir</a>
-                </div>
-            </div> -->
             <div class="col-md-4">
                 <div class="card">
                     <img class="card-img-top" onclick="callOpenExternalNoValidation()" style="height: 225px; width: 100%; display: block;" src="../images/userInputInShellOpenExternalNoValidation.png" data-holder-rendered="true">
@@ -103,23 +94,15 @@
                     <img class="card-img-top" onclick="callOpenExternalValidation()" style="height: 225px; width: 100%; display: block;" src="../images/userInputInShellOpenExternalValidation.png" data-holder-rendered="true">
                     <div class="card-body">
                         <li>nodeIntegration: false</li>
-                        <li>contextIsolation: false</li>
+                        <li>contextIsolation: <b id="Fix_OEV_Config" style="color:#e54170; font-size:16px">false</b></li>
                         <li>sandbox: true</li>
                         <li>validate user input: true</li>
                     </div>
-                    <a href="#" onclick="callOpenExternalValidation()" style="align-self:center" class="btn btn-primary mb-3">Abrir</a>
+                    <div class="col-md-12">
+                        <a href="#" onclick="callOpenExternalValidation()" style="margin-right: 10px;margin-left: 5px;" class="btn btn-primary mb-3 col-md-6">Abrir</a>
+                    </div>
                 </div>
             </div>
-            <!-- <div class="col-md-4">
-                <div class="card">
-                    <img class="card-img-top" onclick="bypassSandbox()" style="height: 225px; width: 100%; display: block;" src="../images/lion-66898_960_720.jpg" data-holder-rendered="true">
-                    <div class="card-body">
-                        <li>nodeIntegration: false</li>
-                        <li>sandbox: true</li>
-                    </div>
-                    <a href="#" onclick="bypassSandbox()" style="align-self:center" class="btn btn-primary mb-3">Abrir</a>
-                </div>
-            </div> -->
         
         <h1 class="col-md-12 mt-5">Bypass Validacao JavaScript</h1>
 
@@ -128,8 +111,12 @@
                     <img class="card-img-top" onclick="callBypassValidacaoJS()" style="height: 225px; width: 100%; display: block;" src="../images/prototypePollutionInPreloadScript.png" data-holder-rendered="true">
                     <div class="card-body">
                         <li>preload: contain</li>
+                        <li>contextIsolation: <b id="Fix_BPVJS_Config" style="color:#e54170; font-size:16px">false</b></li>
                     </div>
-                    <a href="#" onclick="callBypassValidacaoJS()" style="align-self:center" class="btn btn-primary mb-3">Abrir</a>
+                    <div class="col-md-12">
+                        <a href="#" onclick="callBypassValidacaoJS()" style="margin-right: 10px;margin-left: 5px;" class="btn btn-primary mb-3 col-md-6">Abrir</a>
+                        <a href="#" id="Fix_BPVJS_Fix" onclick="changeBypassValidacaoJavaScriptHTML()" class="btn btn-primary mb-3 col-md-6">Fix</a>
+                    </div>
                 </div>
             </div>
 
@@ -140,51 +127,56 @@
                     <img class="card-img-top" onclick="sandboxDisabledBypassSOP()" style="height: 225px; width: 100%; display: block;" src="../images/bypassSopUsingElectronApis.png" data-holder-rendered="true">
                     <div class="card-body">
                         <li>nodeIntegration: false</li>
-                        <li>sandbox: false</li>
+                        <li>sandbox: <b id="Fix_SDB_SOP_Config" style="color:#e54170; font-size:16px">false</b></li>
                     </div>
-                    <a href="#" onclick="sandboxDisabledBypassSOP()" style="align-self:center" class="btn btn-primary mb-3">Abrir</a>
+                    <div class="col-md-12">
+                        <a href="#" onclick="sandboxDisabledBypassSOP()"  style="margin-right: 10px;margin-left: 5px;"  class="btn btn-primary mb-3 col-md-6">Abrir</a>
+                        <a href="#" id="Fix_SDB_SOP_Fix" onclick="changeSandboxBypassSopHTML()" class="btn btn-primary mb-3 col-md-6">Fix</a>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- <h1>RCE</h1>
-    <a><img src="../images/lion-66898_960_720.jpg" alt="Node Integration Enabled" width=300 height=220
-            onclick="callNodeIntegrationRCE()"></a>
-    <a><img src="../images/lion-66898_960_720.jpg" alt="Open External" width=300 height=220
-            onclick="callOpenExternal()"></a>
-    <h1>Shell Open External</h1>
-    <a><img src="../images/lion-66898_960_720.jpg" alt="Context Isolation Disabled" width=300 height=220
-            onclick="callContextIsolationDisabled()"></a>
-    <h1>Bypass JavaScript</h1>
-    <a><img src="../images/lion-66898_960_720.jpg" alt="Bypass Validacao JS" width=300 height=220
-            onclick="callBypassValidacaoJS()"></a>
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-        crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-        crossorigin="anonymous"></script> -->
-    <!-- <script> -->
-        // function changeNodeIntegration(){
-        //     console.log(document.getElementById("Fix_Node_Rce_a").innerHTML);
-        //     console.log(document.getElementById("Fix_Node_Rce_b").innerHTML);
-        //     if(document.getElementById("Fix_Node_Rce_a").innerHTML==="Fix"){
-        //         document.getElementById("Fix_Node_Rce_a").innerHTML="Reset"
-        //         document.getElementById("Fix_Node_Rce_b").innerHTML="false"
-        //         document.getElementById("Fix_Node_Rce_b").style.color="#dede39";
-        //     }else{
-        //         document.getElementById("Fix_Node_Rce_a").innerHTML="Fix"
-        //         document.getElementById("Fix_Node_Rce_b").innerHTML="true"
-        //         document.getElementById("Fix_Node_Rce_b").style.color="#e54170";
-        //     }
+    <script>
+        function changeNodeIntegration(){
 
-        //     changeNodeInt();
-        // }
-    <!-- </script> -->
+            changeButton("Fix_Node_Rce_Fix","Fix_Node_Rce_Config");
+            changeNodeInt();
+        }
+
+        function changeOpenExternalValidationHTML(){
+            changeButton("Fix_OEV_Fix","Fix_OEV_Config");
+            changeOpenExternalValidation();
+        }
+        function changeSandboxBypassSopHTML(){
+            changeButton("Fix_SDB_SOP_Fix","Fix_SDB_SOP_Config");
+            changeSandboxBypassSop();
+        }
+        function changeBypassValidacaoJavaScriptHTML(){
+            changeButton("Fix_BPVJS_Fix","Fix_BPVJS_Config");
+            changeBypassValidationJavaScript();
+        }
+        function changeButton(FixButton, Config){
+            
+            if(document.getElementById(FixButton).innerHTML==="Fix"){
+
+                document.getElementById(FixButton).innerHTML="Reset"
+                document.getElementById(Config).style.color="#dede39";
+            }else{
+                document.getElementById(FixButton).innerHTML="Fix"
+                document.getElementById(Config).style.color="#e54170";
+            }
+
+            if(document.getElementById(Config).innerHTML==="true"){
+                document.getElementById(Config).innerHTML="false"
+            }
+            else{
+                document.getElementById(Config).innerHTML="true"
+
+            }
+        }
+    </script>
 </body>
 
 </html>

@@ -2,7 +2,14 @@ const path = require('path');
 
 const {app, BrowserWindow, Menu, ipcMain, shell} = require('electron');
 
-// var node_int=true;
+//NodeIntegrationEnabled
+var NIE_node_integration=true;
+//SandboxDisabledBypassSOP
+var SDB_sandbox=false;
+//openExternalValidation
+var OEV_context_isolation=false;
+//bypassValidacaoJavaScript
+var BPVJS_context_isolation=false;
 
 let mainWindow;
 let browserwind;
@@ -28,6 +35,80 @@ app.on('ready', function(){
 
 });
 
+
+// function getMapWebPreferences(){
+
+//     var mapWebPreferences = new Map();
+
+//     mapWebPreferences.set('bypassSopSandboxDisabled', returnPocsMapsReset("bypassSopSandboxDisabled"));
+//     mapWebPreferences.set('bypassValidacao', returnPocsMapsReset("bypassValidacao"));
+//     mapWebPreferences.set('nodeIntegrationEnabled', returnPocsMapsReset("nodeIntegrationEnabled"));
+
+//     return mapWebPreferences;
+// };
+
+// function returnPocsMapsReset(poc){
+
+//     var map=new Map();
+
+//     if(poc==="bypassSopSandboxDisabled"){
+//         map.set("node_integration",false);
+//         map.set("sandbox_",false);
+//         map.set("context_isolation",false);
+//         return map;
+//     }
+//     else if (poc==="bypassValidacao"){
+//         map.set("node_integration",false);
+//         map.set("sandbox_",false);
+//         map.set("context_isolation",false);
+//         return map;
+//     }
+//     else if(poc==="nodeIntegrationEnabled"){
+//         map.set("node_integration",true);
+//         map.set("sandbox_",false);
+//         map.set("context_isolation",false);
+//         return map;
+//     }
+
+// }
+
+// function setPocConfigsFix(arrayConfigs){
+//     arrayConfigs.forEach(function (item, indice, array) {
+//         console.log("item: "+item+", indice: "+indice)
+//         if(indice === "node_integration"){
+//             node_integration=item;
+//         }
+//         else if(indice === "sandbox_"){
+//             sandbox_=item;
+//         }
+//         else if(indice === "context_isolation"){
+//             context_isolation=item;
+//         }
+//     });
+// }
+// function setPocConfigsReset(arrayConfigs){
+//     arrayConfigs.forEach(function (item, indice, array) {
+
+//         var config;
+
+//         if(item==true){
+//             config = false;
+//         }else{
+//             config = true;
+//         }
+
+//         if(indice === "node_integration"){
+//             node_integration=config;
+//         }
+//         else if(indice === "sandbox_"){
+//             sandbox_=config;
+//         }
+//         else if(indice === "context_isolation"){
+//             context_isolation=config;
+//         }
+//     });
+// }
+
 // payload
 // <script> require('child_process').execFile('gnome-calculator',function(){})</script>
 // <script> require('child_process').exec('gnome-calculator')</script>
@@ -37,7 +118,8 @@ function nodeIntegrationEnabled(){
         title:'Node Integration Enabled',
         webPreferences:{
             contextIsolation: false,
-            nodeIntegration: true
+            sandbox:false,
+            nodeIntegration: NIE_node_integration,
         }
     });
     browserwind.loadFile('web-pages/domXSS.html');
@@ -56,7 +138,7 @@ function sandboxDisabledBypassSOP(){
         title:'Sandbox Disabled',
         webPreferences:{
             contextIsolation: false,
-            sandbox: false,
+            sandbox: SDB_sandbox,
         }
     });
     browserwind.loadFile('web-pages/domXSS.html');
@@ -73,7 +155,7 @@ function openExternalValidation(){
         title:'Open External Validation',
         webPreferences:{
             nodeIntegration: false,
-            contextIsolation: false,
+            contextIsolation: OEV_context_isolation,
             sandbox: true,
             preload: path.join(app.getAppPath(), 'preloads/preload-openExternalValidation.js')
         }
@@ -106,30 +188,12 @@ function openExternalNoValidation(){
     });
 
 }
-
-function contextIsolationDisabled(){
-
-    browserwind = new BrowserWindow({
-        title:'Context Isolation Disabled',
-        webPreferences:{
-            nodeIntegration: true,
-            preload: path.join(__dirname, 'preloads/preload-sandbox.js')
-        }
-    });
-
-    browserwind.loadFile('web-pages/domXSS.html');
-    
-    browserwind.on('close', function(){
-        browserwind=null;
-    });
-
-}
 function bypassValidacaoJavaScript(){
 
     browserwind = new BrowserWindow({
         title:'Bypass Validacao Java Script',
         webPreferences:{
-            contextIsolation: false,
+            contextIsolation: BPVJS_context_isolation,
             preload: path.join(__dirname, 'preloads/preload-bypassValidacao.js')
         }
     });
@@ -152,43 +216,6 @@ function bypassNodeIntegrationByPreload(){
         }
     });
 
-    browserwind.loadFile('web-pages/domXSS.html');
-    
-    browserwind.on('close', function(){
-        browserwind=null;
-    });
-
-}
-function bypassSandbox(){
-
-    browserwind = new BrowserWindow({
-        title:'Bypass Sandbox',
-        webPreferences:{
-            sandbox: true,
-            enableRemoteModule: true,
-            preload: path.join(__dirname, 'preloads/preload-bypassSandbox.js')
-        }
-    });
-
-    browserwind.loadFile('web-pages/bypassSandbox.html');
-    
-    browserwind.on('close', function(){
-        browserwind=null;
-    });
-
-}
-
-function remoteExportedRCE(){
-    browserwind = new BrowserWindow({
-        title:'Remote Module Exported RCE',
-        webPreferences:{
-            enableRemoteModule: true,
-            nodeIntegration: false,
-            sandbox: true,
-            preload: path.join(app.getAppPath(), 
-            'preloads/preload-remoteExported.js'),
-        }
-    });
     browserwind.loadFile('web-pages/domXSS.html');
     
     browserwind.on('close', function(){
@@ -229,13 +256,25 @@ ipcMain.on('open-remoteExported', function(){
     remoteExportedRCE();
 });
 
-// ipcMain.on('change-nodeInt', function(){
-//     if(node_int){
-//         node_int=false;
-//     }else{
-//         node_int=true;
-//     }
-// })
+ipcMain.on('change-nodeInt', function(){
+    NIE_node_integration = changeBooleans(NIE_node_integration);
+});
+ipcMain.on('change-SDB_SOP', function(){
+    SDB_sandbox=changeBooleans(SDB_sandbox);
+});
+ipcMain.on('change-OEV', function(){
+    OEV_context_isolation=changeBooleans(OEV_context_isolation);
+});
+ipcMain.on('change-BPVJS', function(){
+    BPVJS_context_isolation=changeBooleans(BPVJS_context_isolation);
+});
+
+function changeBooleans(param){
+    if(param===true){
+        return false;
+    }
+    return true;
+}
 
 const mainMenuTemplate = [];
 
