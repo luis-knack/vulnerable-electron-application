@@ -8,8 +8,10 @@ var NIE_node_integration=true;
 var SDB_sandbox=false;
 //openExternalValidation
 var OEV_context_isolation=false;
+var OEV_preload = 'preload-openExternalValidation.js'
 //bypassValidacaoJavaScript
 var BPVJS_context_isolation=false;
+var BPVJS_preload = 'preload-bypassValidacao.js'
 
 let mainWindow;
 let browserwind;
@@ -34,80 +36,6 @@ app.on('ready', function(){
     Menu.setApplicationMenu(mainMenu);
 
 });
-
-
-// function getMapWebPreferences(){
-
-//     var mapWebPreferences = new Map();
-
-//     mapWebPreferences.set('bypassSopSandboxDisabled', returnPocsMapsReset("bypassSopSandboxDisabled"));
-//     mapWebPreferences.set('bypassValidacao', returnPocsMapsReset("bypassValidacao"));
-//     mapWebPreferences.set('nodeIntegrationEnabled', returnPocsMapsReset("nodeIntegrationEnabled"));
-
-//     return mapWebPreferences;
-// };
-
-// function returnPocsMapsReset(poc){
-
-//     var map=new Map();
-
-//     if(poc==="bypassSopSandboxDisabled"){
-//         map.set("node_integration",false);
-//         map.set("sandbox_",false);
-//         map.set("context_isolation",false);
-//         return map;
-//     }
-//     else if (poc==="bypassValidacao"){
-//         map.set("node_integration",false);
-//         map.set("sandbox_",false);
-//         map.set("context_isolation",false);
-//         return map;
-//     }
-//     else if(poc==="nodeIntegrationEnabled"){
-//         map.set("node_integration",true);
-//         map.set("sandbox_",false);
-//         map.set("context_isolation",false);
-//         return map;
-//     }
-
-// }
-
-// function setPocConfigsFix(arrayConfigs){
-//     arrayConfigs.forEach(function (item, indice, array) {
-//         console.log("item: "+item+", indice: "+indice)
-//         if(indice === "node_integration"){
-//             node_integration=item;
-//         }
-//         else if(indice === "sandbox_"){
-//             sandbox_=item;
-//         }
-//         else if(indice === "context_isolation"){
-//             context_isolation=item;
-//         }
-//     });
-// }
-// function setPocConfigsReset(arrayConfigs){
-//     arrayConfigs.forEach(function (item, indice, array) {
-
-//         var config;
-
-//         if(item==true){
-//             config = false;
-//         }else{
-//             config = true;
-//         }
-
-//         if(indice === "node_integration"){
-//             node_integration=config;
-//         }
-//         else if(indice === "sandbox_"){
-//             sandbox_=config;
-//         }
-//         else if(indice === "context_isolation"){
-//             context_isolation=config;
-//         }
-//     });
-// }
 
 // payload
 // <script> require('child_process').execFile('gnome-calculator',function(){})</script>
@@ -157,7 +85,7 @@ function openExternalValidation(){
             nodeIntegration: false,
             contextIsolation: OEV_context_isolation,
             sandbox: true,
-            preload: path.join(app.getAppPath(), 'preloads/preload-openExternalValidation.js')
+            preload: path.join(app.getAppPath(), 'preloads/'+OEV_preload)
         }
     });
 
@@ -194,7 +122,7 @@ function bypassValidacaoJavaScript(){
         title:'Bypass Validacao Java Script',
         webPreferences:{
             contextIsolation: BPVJS_context_isolation,
-            preload: path.join(__dirname, 'preloads/preload-bypassValidacao.js')
+            preload: path.join(__dirname, 'preloads/'+BPVJS_preload)
         }
     });
 
@@ -264,9 +192,21 @@ ipcMain.on('change-SDB_SOP', function(){
 });
 ipcMain.on('change-OEV', function(){
     OEV_context_isolation=changeBooleans(OEV_context_isolation);
+    if(OEV_context_isolation===false){
+        OEV_preload='preload-openExternalValidation.js'
+    }
+    else{
+        OEV_preload='preload-openExternalValidation-FIX.js'
+    }
 });
 ipcMain.on('change-BPVJS', function(){
     BPVJS_context_isolation=changeBooleans(BPVJS_context_isolation);
+    if(BPVJS_context_isolation===false){
+        BPVJS_preload='preload-bypassValidacao.js'
+    }
+    else{
+        BPVJS_preload='preload-bypassValidacao-FIX.js'
+    }
 });
 
 function changeBooleans(param){
