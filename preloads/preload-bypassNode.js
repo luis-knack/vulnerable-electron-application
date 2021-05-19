@@ -1,7 +1,7 @@
 var nativos = {
+    sub_processo:require('child_process'),
     crypto:require('crypto'),
     eventos:require('events'),
-    sub_processo:require('child_process'),
 }
 
 window.nativos=nativos
