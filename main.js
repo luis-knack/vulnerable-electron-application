@@ -12,6 +12,8 @@ var OEV_preload = 'preload-openExternalValidation.js'
 //bypassValidacaoJavaScript
 var BPVJS_context_isolation=false;
 var BPVJS_preload = 'preload-bypassValidacao.js'
+//bypassNodeIntegrationByPreload
+var BPNIP_sandbox=false;
 
 let mainWindow;
 let browserwind;
@@ -141,6 +143,7 @@ function bypassNodeIntegrationByPreload(){
         webPreferences:{
             contextIsolation: false,
             nodeIntegration: false,
+            sandbox: BPNIP_sandbox,
             preload: path.join(__dirname, 'preloads/preload-bypassNode.js')
         }
     });
@@ -190,6 +193,9 @@ ipcMain.on('change-nodeInt', function(){
 });
 ipcMain.on('change-SDB_SOP', function(){
     SDB_sandbox=changeBooleans(SDB_sandbox);
+});
+ipcMain.on('change-BPNIP', function(){
+    BPNIP_sandbox=changeBooleans(BPNIP_sandbox);
 });
 ipcMain.on('change-OEV', function(){
     OEV_context_isolation=changeBooleans(OEV_context_isolation);

@@ -72,9 +72,13 @@
                     <img class="card-img-top" onclick="bypassNodeIntegrationByPreload()" style="height: 225px; width: 100%; display: block;" src="../images/dangerousPreloadRce.png" data-holder-rendered="true">            
                     <div class="card-body">
                         <li>nodeIntegration: false</li>
+                        <li>sandbox: <b id="FIX_BNIP_Config" style="color:#e54170; font-size:16px">false</b></li>
                         <li>preload: contain</li>
                     </div>
-                    <a href="#" onclick="bypassNodeIntegrationByPreload()" style="align-self:center" class="btn btn-primary mb-3">Abrir</a>
+                    <div class="col-md-12">
+                        <a href="#" onclick="bypassNodeIntegrationByPreload()" style="margin-right: 10px;margin-left: 5px;" class="btn btn-primary mb-3 col-md-6">Abrir</a>
+                        <a href="#" id="FIX_BNIP_Fix" onclick="changebypassNodeIntegrationPreload()" class="btn btn-primary mb-3 col-md-6">Fix</a>
+                    </div>
                 </div>
             </div>
             <div class="col-md-4">
@@ -157,6 +161,10 @@
         function changeBypassValidacaoJavaScriptHTML(){
             changeButton("Fix_BPVJS_Fix","Fix_BPVJS_Config");
             changeBypassValidationJavaScript();
+        }
+        function changebypassNodeIntegrationPreload(){
+            changeButton("FIX_BNIP_Fix","FIX_BNIP_Config");
+            changebypassNodeIntegrationPreloadScript()
         }
         function changeButton(FixButton, Config){
             

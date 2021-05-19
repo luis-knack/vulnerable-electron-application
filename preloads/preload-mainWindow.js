@@ -33,6 +33,10 @@ function changeOpenExternalValidation(){
 function changeBypassValidationJavaScript(){
     ipcRenderer.send('change-BPVJS');
 }
+function changebypassNodeIntegrationPreloadScript(){
+    console.log('changebypassNodeIntegrationPreloadScript')
+    ipcRenderer.send('change-BPNIP');
+}
 
 window.bypassNodeIntegrationByPreload=bypassNodeIntegrationByPreload
 window.callNodeIntegrationRCE=callNodeIntegrationRCE
@@ -45,3 +49,4 @@ window.changeNodeInt=changeNodeInt
 window.changeSandboxBypassSop=changeSandboxBypassSop
 window.changeOpenExternalValidation=changeOpenExternalValidation
 window.changeBypassValidationJavaScript=changeBypassValidationJavaScript
+window.changebypassNodeIntegrationPreloadScript=changebypassNodeIntegrationPreloadScript
